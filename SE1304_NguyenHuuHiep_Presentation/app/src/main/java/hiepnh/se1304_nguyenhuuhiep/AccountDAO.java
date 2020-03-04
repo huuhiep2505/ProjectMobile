@@ -1,5 +1,7 @@
 package hiepnh.se1304_nguyenhuuhiep;
 
+import android.util.Log;
+
 import java.io.Serializable;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -30,10 +32,10 @@ public class AccountDAO implements Serializable {
         }
     }
 
-    public String checkLogin(String username, String password) throws Exception{
+    public String checkLogin(String username, String password) {
         String role = "failed";
         try {
-            String sql = "Select role From Accounts Where username = ? and password = ? and del_flag LIKE '0'";
+            String sql = "Select role From Accounts Where username = ? and password = ? and del_flag = 'False'";
             conn=MyConnection.getMyConnection();
             preStm=conn.prepareStatement(sql);
             preStm.setString(1, username);
@@ -43,6 +45,7 @@ public class AccountDAO implements Serializable {
                 role=rs.getString("role");
             }
         } catch (Exception e) {
+            Log.e("Er: ", e.getMessage());
         }finally{
             closeConnection();
         }
@@ -64,7 +67,7 @@ public class AccountDAO implements Serializable {
         }
         return check;
     }
-    public AccountDTO getAccount(String name) throws SQLException {
+    public AccountDTO getAccount(String name) throws Exception {
         String username;
         String password;
         String role;

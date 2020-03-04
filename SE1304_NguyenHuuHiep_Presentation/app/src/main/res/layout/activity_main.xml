@@ -17,7 +17,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Username"/>
+        android:text="Username: "/>
     <EditText
         android:id="@+id/edtUsername"
         android:layout_width="match_parent"
@@ -26,7 +26,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Password "/>
+        android:text="Password: "/>
     <EditText
         android:id="@+id/edtPassword"
         android:layout_width="match_parent"

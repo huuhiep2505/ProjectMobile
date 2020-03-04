@@ -1,18 +1,20 @@
 package hiepnh.se1304_nguyenhuuhiep;
 
-import java.io.Serializable;
+import android.annotation.SuppressLint;
+import android.os.StrictMode;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 
-public class MyConnection implements Serializable {
-    public static Connection getMyConnection(){
-        Connection conn=null;
-        try {
-            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-            conn= DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databaseName=Presentation", "sa", "01202823114");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return conn;
+public class MyConnection{
+
+    @SuppressLint("NewApi")
+    public static Connection getMyConnection() throws Exception{
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder()
+                .permitAll().build();
+        StrictMode.setThreadPolicy(policy);
+            Class.forName("net.sourceforge.jtds.jdbc.Driver");
+        return DriverManager.getConnection("jdbc:jtds:sqlserver://192.168.1.9:1433;" +
+                "databaseName=PRM391","sa", "123");
     }
 }
