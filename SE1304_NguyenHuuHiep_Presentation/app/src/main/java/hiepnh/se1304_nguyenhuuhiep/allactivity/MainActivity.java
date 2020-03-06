@@ -1,11 +1,14 @@
-package hiepnh.se1304_nguyenhuuhiep;
+package hiepnh.se1304_nguyenhuuhiep.allactivity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.Toast;
+
+import hiepnh.se1304_nguyenhuuhiep.R;
+import hiepnh.se1304_nguyenhuuhiep.daos.AccountDAO;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -23,6 +26,11 @@ public class MainActivity extends AppCompatActivity {
         String username = edtUsername.getText().toString();
         String password = edtPassword.getText().toString();
         String role = accountDAO.checkLogin(username, password);
-        Toast.makeText(this, "Role: " + role, Toast.LENGTH_LONG).show();
+        if (role.equals("user")){
+            Intent intent = new Intent(this, UserActivity.class);
+            startActivity(intent);
+            finish();
+        }
+
     }
 }

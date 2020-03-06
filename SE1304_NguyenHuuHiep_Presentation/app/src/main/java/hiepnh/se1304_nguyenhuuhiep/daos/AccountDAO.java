@@ -1,4 +1,4 @@
-package hiepnh.se1304_nguyenhuuhiep;
+package hiepnh.se1304_nguyenhuuhiep.daos;
 
 import android.util.Log;
 
@@ -6,7 +6,9 @@ import java.io.Serializable;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
+
+import hiepnh.se1304_nguyenhuuhiep.dtos.AccountDTO;
+import hiepnh.se1304_nguyenhuuhiep.db.MyConnection;
 
 public class AccountDAO implements Serializable {
     private Connection conn = null ;
@@ -36,7 +38,7 @@ public class AccountDAO implements Serializable {
         String role = "failed";
         try {
             String sql = "Select role From Accounts Where username = ? and password = ? and del_flag = 'False'";
-            conn=MyConnection.getMyConnection();
+            conn= MyConnection.getMyConnection();
             preStm=conn.prepareStatement(sql);
             preStm.setString(1, username);
             preStm.setString(2, password);

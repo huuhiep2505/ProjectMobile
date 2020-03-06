@@ -1,4 +1,4 @@
-package hiepnh.se1304_nguyenhuuhiep;
+package hiepnh.se1304_nguyenhuuhiep.db;
 
 import android.annotation.SuppressLint;
 import android.os.StrictMode;
@@ -8,7 +8,7 @@ import java.sql.DriverManager;
 
 public class MyConnection{
 
-    @SuppressLint("NewApi")
+//    @SuppressLint("NewApi")
     public static Connection getMyConnection() throws Exception{
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder()
                 .permitAll().build();

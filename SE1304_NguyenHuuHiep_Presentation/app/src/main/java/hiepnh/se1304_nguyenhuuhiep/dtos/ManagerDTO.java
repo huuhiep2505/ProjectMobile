@@ -1,4 +1,4 @@
-package hiepnh.se1304_nguyenhuuhiep;
+package hiepnh.se1304_nguyenhuuhiep.dtos;
 
 import java.io.Serializable;
 import java.util.Date;
