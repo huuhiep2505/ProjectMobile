@@ -7,8 +7,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Date;
 
-import nguyenhuuhiep.presentation.db.MyConnection;
-import nguyenhuuhiep.presentation.dto.UserDTO;
 
 public class UserDAO implements Serializable {
     private Connection conn = null;
@@ -78,7 +76,9 @@ public class UserDAO implements Serializable {
                 manager = rs.getString("manager");
                 dto = new UserDTO(name,phone,address,email,username,birthday,manager);
             }
-        }finally{
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally{
             closeConnection();
         }
         return dto;

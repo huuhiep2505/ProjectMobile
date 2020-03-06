@@ -1,14 +1,16 @@
 package hiepnh.se1304_nguyenhuuhiep;
 
 import java.io.Serializable;
+import java.util.Date;
 
 public class UserDTO implements Serializable {
-    String username,name,phone,address,email,code,birthday,manager;
+    String username,name,phone,address,email,code,manager;
+    Date birthday;
 
-    public UserDTO() {
+    public UserDTO(String name, String phone, String address, String email, String username, Date birthday, String manager) {
     }
 
-    public UserDTO(String username, String name, String phone, String address, String email, String code, String birthday, String manager) {
+    public UserDTO(String username, String name, String phone, String address, String email, String code, Date birthday, String manager) {
         this.username = username;
         this.name = name;
         this.phone = phone;
@@ -67,11 +69,11 @@ public class UserDTO implements Serializable {
         this.code = code;
     }
 
-    public String getBirthday() {
+    public Date getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(String birthday) {
+    public void setBirthday(Date birthday) {
         this.birthday = birthday;
     }
 

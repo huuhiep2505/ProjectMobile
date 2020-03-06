@@ -7,8 +7,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import nguyenhuuhiep.presentation.db.MyConnection;
-import nguyenhuuhiep.presentation.dto.ManagerDTO;
 
 public class ManagerDAO implements Serializable {
     private Connection conn = null;
@@ -78,7 +76,9 @@ public class ManagerDAO implements Serializable {
 
                 dto = new ManagerDTO(name,phone,address,email,username,birthday);
             }
-        }finally{
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally{
             closeConnection();
         }
         return dto;

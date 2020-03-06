@@ -7,8 +7,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Date;
 
-import nguyenhuuhiep.presentation.db.MyConnection;
-import nguyenhuuhiep.presentation.dto.AdminDTO;
 
 public class AdminDAO implements Serializable {
     private Connection conn = null;
@@ -78,7 +76,9 @@ public class AdminDAO implements Serializable {
 
                 dto = new AdminDTO(name,phone,address,email,username,birthday);
             }
-        }finally{
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally{
             closeConnection();
         }
         return dto;
