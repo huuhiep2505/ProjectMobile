@@ -26,7 +26,9 @@ public class UserActivity extends AppCompatActivity {
         setContentView(R.layout.activity_user);
         listWorking = findViewById(R.id.listWorking);
         dao = new WorkingDAO();
-        List<WorkingDTO> result = dao.getListWorking();
+        Intent intent = this.getIntent();
+        String username = intent.getStringExtra("Username");
+        List<WorkingDTO> result = dao.getListWorking(username);
         adapter = new WorkAdapter();
         adapter.setWorkingDTOList(result);
         listWorking.setAdapter(adapter);
@@ -46,5 +48,10 @@ public class UserActivity extends AppCompatActivity {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
         finish();
+    }
+
+    public void clickToSearch(View view) {
+//        Intent intent = new Intent(this, SearchActivity.class);
+//        startActivity(intent);
     }
 }
