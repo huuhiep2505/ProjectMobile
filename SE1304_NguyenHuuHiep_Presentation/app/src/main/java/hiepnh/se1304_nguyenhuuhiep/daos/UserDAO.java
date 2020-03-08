@@ -6,7 +6,9 @@ import java.io.Serializable;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import hiepnh.se1304_nguyenhuuhiep.db.MyConnection;
 import hiepnh.se1304_nguyenhuuhiep.dtos.UserDTO;
@@ -53,7 +55,7 @@ public class UserDAO implements Serializable {
         }
         return role;
     }
-    public boolean createUser(String username,String password,String fullname, String phone, String address, String email, Date birthday,String role, String groupId) throws Exception{
+    public boolean createUser(String username,String password,String fullname, String phone, String address, String email, String birthday,String role, String groupId) throws Exception{
         boolean check = false;
         try {
             String sql = "Insert into Users (username,password,fullname,phone,address,email,birthday,role,isblock,groupId) Values (?,?,?,?,?,?,?,?,?,?)";
@@ -65,7 +67,7 @@ public class UserDAO implements Serializable {
             preStm.setString(4, phone);
             preStm.setString(5, address);
             preStm.setString(6, email);
-            preStm.setDate(7, (java.sql.Date) birthday);
+            preStm.setString(7, birthday);
             preStm.setString(8,role);
             preStm.setBoolean(9,false);
             preStm.setString(10,groupId);
@@ -80,7 +82,7 @@ public class UserDAO implements Serializable {
         String address = null;
         String email = null;
         String fullname = null;
-        Date birthday = null;
+        String birthday = null;
         String groupId = null;
         String role = null;
         UserDTO dto=null;
@@ -97,7 +99,7 @@ public class UserDAO implements Serializable {
                 phone = rs.getString("phone");
                 address = rs.getString("address");
                 email = rs.getString("email");
-                birthday = rs.getDate("birthday");
+                birthday = rs.getString("birthday");
                 role = rs.getString("role");
                 groupId = rs.getString("groupId");
                 dto = new UserDTO(username,fullname,phone,address,email,role,groupId,birthday);
@@ -106,6 +108,42 @@ public class UserDAO implements Serializable {
             closeConnection();
         }
         return dto;
+    }
+    public List<UserDTO> getAccountManagement()  {
+        List<UserDTO> result = new ArrayList<>();
+        String username = null;
+        String phone = null;
+        String address = null;
+        String email = null;
+        String fullname = null;
+        String birthday = null;
+        String groupId = null;
+        String role = null;
+        UserDTO dto=null;
+        try {
+            String sql = "Select username,fullname,phone,address,email,birthday,role,groupId From Users";
+            conn=MyConnection.getMyConnection();
+            preStm=conn.prepareStatement(sql);
+            rs=preStm.executeQuery();
+
+            while (rs.next()) {
+                username = rs.getString("username");
+                fullname = rs.getString("fullname");
+                phone = rs.getString("phone");
+                address = rs.getString("address");
+                email = rs.getString("email");
+                birthday = rs.getString("birthday");
+                role = rs.getString("role");
+                groupId = rs.getString("groupId");
+                dto = new UserDTO(username,fullname,phone,address,email,role,groupId,birthday);
+                result.add(dto);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally{
+            closeConnection();
+        }
+        return result;
     }
     public boolean updateUser(String password, String username, String fullname, String phone, String address, String email, Date birthday, String role, String groupId)throws Exception{
         boolean check=false;

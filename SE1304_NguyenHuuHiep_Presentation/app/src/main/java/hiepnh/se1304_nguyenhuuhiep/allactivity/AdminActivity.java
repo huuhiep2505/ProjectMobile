@@ -17,7 +17,7 @@ public class AdminActivity extends AppCompatActivity {
     }
 
     public void clickToAccountManagement(View view) {
-//        Intent intent = new Intent(this,AccountManagementActivity.class);
-//        startActivity(intent);
+        Intent intent = new Intent(this,AccountManagementActivity.class);
+        startActivity(intent);
     }
 }
