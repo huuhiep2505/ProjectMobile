@@ -5,13 +5,19 @@ import java.util.Date;
 
 public class UserDTO implements Serializable {
     String username,password,fullname,phone,address,email,role,groupId;
-    Date birthday;
+    String birthday;
     boolean isblock;
 
     public UserDTO() {
     }
 
-    public UserDTO(String username, String fullname, String phone, String address, String email, String role, String groupId, Date birthday) {
+    public UserDTO(String username, String fullname, String role) {
+        this.username = username;
+        this.fullname = fullname;
+        this.role = role;
+    }
+
+    public UserDTO(String username, String fullname, String phone, String address, String email, String role, String groupId, String birthday) {
         this.username = username;
         this.fullname = fullname;
         this.phone = phone;
@@ -22,7 +28,7 @@ public class UserDTO implements Serializable {
         this.birthday = birthday;
     }
 
-    public UserDTO(String username, String password, String fullname, String phone, String address, String email, String role, String groupId, Date birthday, boolean isblock) {
+    public UserDTO(String username, String password, String fullname, String phone, String address, String email, String role, String groupId, String birthday, boolean isblock) {
         this.username = username;
         this.password = password;
         this.fullname = fullname;
@@ -99,11 +105,11 @@ public class UserDTO implements Serializable {
         this.groupId = groupId;
     }
 
-    public Date getBirthday() {
+    public String getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(Date birthday) {
+    public void setBirthday(String birthday) {
         this.birthday = birthday;
     }
 

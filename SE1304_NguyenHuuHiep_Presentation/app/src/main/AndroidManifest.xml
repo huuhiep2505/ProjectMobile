@@ -11,6 +11,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
+        <activity android:name=".allactivity.ShowAccountManagementActivity"></activity>
+        <activity android:name=".allactivity.AccountManagementActivity" />
+
+        <activity android:name=".allactivity.UpdateStatusActivity"></activity>
+
         <activity android:name=".allactivity.UserSearchActivity"></activity>
         <activity android:name=".allactivity.UpdateStatusActivity" />
         <activity android:name=".allactivity.AdminActivity" />
