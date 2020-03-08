@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
+import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -15,21 +15,24 @@ import java.util.ArrayList;
 import java.util.List;
 
 import hiepnh.se1304_nguyenhuuhiep.R;
+import hiepnh.se1304_nguyenhuuhiep.alladapter.WorkAdapter;
 import hiepnh.se1304_nguyenhuuhiep.daos.WorkingDAO;
 import hiepnh.se1304_nguyenhuuhiep.dtos.WorkingDTO;
 
-public class UpdateStatusActivity extends AppCompatActivity {
+public class UserSearchActivity extends AppCompatActivity {
 
     private Spinner spStatus;
     private String stringSelected;
+    private WorkingDAO dao;
+    private ListView listSearch;
+    private WorkAdapter adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_update_status);
+        setContentView(R.layout.activity_user_search);
         spStatus = findViewById(R.id.spStatus);
-        List<String> list = new ArrayList<>();
-        list.add("Start");
-        list.add("Process");
+        dao = new WorkingDAO();
+        List<String> list = dao.getAllStatus();
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, list);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spStatus.setAdapter(adapter);
@@ -46,21 +49,17 @@ public class UpdateStatusActivity extends AppCompatActivity {
         });
     }
 
-    public void updateStatus(View view) {
+    public void searchStatus(View view) {
         Intent intent = this.getIntent();
-        String id = intent.getStringExtra("workId");
-        WorkingDAO dao = new WorkingDAO();
-        boolean check = dao.updateStatus(stringSelected, id);
-        if (check){
-            Toast.makeText(this, "Update Success", Toast.LENGTH_LONG).show();
-            WorkingDTO result = (dao.getWorking(id));
-            Intent intentShow = new Intent(this, WorkingDetailActivity.class);
-            intentShow.putExtra("DTO", result);
-            startActivity(intentShow);
-            finish();
+        String username = intent.getStringExtra("Username");
+        List<WorkingDTO> listResult = dao.searchStatus(stringSelected, username);
+        if (listResult.size() > 0){
+            listSearch = findViewById(R.id.listWorkSearch);
+            adapter = new WorkAdapter();
+            adapter.setWorkingDTOList(listResult);
+            listSearch.setAdapter(adapter);
         }else {
-            Toast.makeText(this, "Update Fail", Toast.LENGTH_LONG).show();
-            finish();
+            Toast.makeText(this, "Not found", Toast.LENGTH_LONG).show();
         }
     }
 }

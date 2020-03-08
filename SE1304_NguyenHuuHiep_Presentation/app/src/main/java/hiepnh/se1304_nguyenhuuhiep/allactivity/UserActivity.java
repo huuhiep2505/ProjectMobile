@@ -20,6 +20,7 @@ public class UserActivity extends AppCompatActivity {
     private ListView listWorking;
     private WorkAdapter adapter;
     private WorkingDAO dao;
+    private String username;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,7 +28,7 @@ public class UserActivity extends AppCompatActivity {
         listWorking = findViewById(R.id.listWorking);
         dao = new WorkingDAO();
         Intent intent = this.getIntent();
-        String username = intent.getStringExtra("Username");
+        username = intent.getStringExtra("Username");
         List<WorkingDTO> result = dao.getListWorking(username);
         adapter = new WorkAdapter();
         adapter.setWorkingDTOList(result);
@@ -51,7 +52,8 @@ public class UserActivity extends AppCompatActivity {
     }
 
     public void clickToSearch(View view) {
-//        Intent intent = new Intent(this, SearchActivity.class);
-//        startActivity(intent);
+        Intent intent = new Intent(this, UserSearchActivity.class);
+        intent.putExtra("Username", username);
+        startActivity(intent);
     }
 }
