@@ -11,12 +11,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-<<<<<<< HEAD
+
         <activity android:name=".allactivity.ShowAccountManagementActivity"></activity>
         <activity android:name=".allactivity.AccountManagementActivity" />
-=======
+
         <activity android:name=".allactivity.UpdateStatusActivity"></activity>
->>>>>>> 75177e162c612085ecd9ecc38266f5a0a140c9d3
+
         <activity android:name=".allactivity.AdminActivity" />
         <activity android:name=".allactivity.WorkingDetailActivity" />
         <activity android:name=".allactivity.UserActivity" />
