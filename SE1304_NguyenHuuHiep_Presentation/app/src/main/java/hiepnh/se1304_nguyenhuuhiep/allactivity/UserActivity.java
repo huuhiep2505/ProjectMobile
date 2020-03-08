@@ -34,7 +34,7 @@ public class UserActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 WorkingDTO dto = (WorkingDTO) listWorking.getItemAtPosition(i);
-                WorkingDTO result = (dao.getWorking(dto.getId()));
+                WorkingDTO result = (dao.getWorking(dto.getWorkId()));
                 Intent intentShow = new Intent(UserActivity.this, WorkingDetailActivity.class);
                 intentShow.putExtra("DTO", result);
                 startActivity(intentShow);

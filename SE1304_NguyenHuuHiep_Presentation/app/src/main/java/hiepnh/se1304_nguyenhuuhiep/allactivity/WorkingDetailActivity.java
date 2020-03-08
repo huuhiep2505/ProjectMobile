@@ -18,6 +18,6 @@ public class WorkingDetailActivity extends AppCompatActivity {
         Intent intent = this.getIntent();
         WorkingDTO dto = (WorkingDTO) intent.getSerializableExtra("DTO");
         TextView txtResult = findViewById(R.id.txtResult);
-        txtResult.setText(dto.getDes());
+        txtResult.setText(dto.getWorkDes());
     }
 }

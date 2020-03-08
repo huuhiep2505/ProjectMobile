@@ -39,7 +39,7 @@ public class WorkAdapter extends BaseAdapter {
         TextView txtName = view.findViewById(R.id.txtName);
 //        TextView txtMark = view.findViewById(R.id.txtMark);
 //        TextView txtName = view.findViewById(R.id.txtName);
-        txtName.setText(dto.getName());
+        txtName.setText(dto.getWorkName());
         return view;
     }
 

@@ -48,7 +48,7 @@ public class WorkingDAO {
             while (rs.next()) {
                 name = rs.getString("workName");
                 id = rs.getString("workId");
-                dto = new WorkingDTO(id, name, "");
+                dto = new WorkingDTO(id, name);
                 result.add(dto);
             }
         }catch (Exception e){

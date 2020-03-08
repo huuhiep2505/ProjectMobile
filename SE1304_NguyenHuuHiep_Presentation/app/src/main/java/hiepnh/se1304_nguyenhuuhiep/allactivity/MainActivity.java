@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.EditText;
 
 import hiepnh.se1304_nguyenhuuhiep.R;
-import hiepnh.se1304_nguyenhuuhiep.daos.AccountDAO;
+import hiepnh.se1304_nguyenhuuhiep.daos.UserDAO;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -22,12 +22,16 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void clickToLogin(View view) {
-        AccountDAO accountDAO = new AccountDAO();
+        UserDAO userDAO = new UserDAO();
         String username = edtUsername.getText().toString();
         String password = edtPassword.getText().toString();
-        String role = accountDAO.checkLogin(username, password);
+        String role = userDAO.checkLogin(username, password);
         if (role.equals("user")){
             Intent intent = new Intent(this, UserActivity.class);
+            startActivity(intent);
+            finish();
+        }else if(role.equals("admin")){
+            Intent intent = new Intent(this, AdminActivity.class);
             startActivity(intent);
             finish();
         }

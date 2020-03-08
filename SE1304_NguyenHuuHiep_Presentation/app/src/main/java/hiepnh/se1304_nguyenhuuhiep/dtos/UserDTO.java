@@ -4,21 +4,35 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class UserDTO implements Serializable {
-    String username,name,phone,address,email,code,manager;
+    String username,password,fullname,phone,address,email,role,groupId;
     Date birthday;
+    boolean isblock;
 
-    public UserDTO(String name, String phone, String address, String email, String username, Date birthday, String manager) {
+    public UserDTO() {
     }
 
-    public UserDTO(String username, String name, String phone, String address, String email, String code, Date birthday, String manager) {
+    public UserDTO(String username, String fullname, String phone, String address, String email, String role, String groupId, Date birthday) {
         this.username = username;
-        this.name = name;
+        this.fullname = fullname;
         this.phone = phone;
         this.address = address;
         this.email = email;
-        this.code = code;
+        this.role = role;
+        this.groupId = groupId;
         this.birthday = birthday;
-        this.manager = manager;
+    }
+
+    public UserDTO(String username, String password, String fullname, String phone, String address, String email, String role, String groupId, Date birthday, boolean isblock) {
+        this.username = username;
+        this.password = password;
+        this.fullname = fullname;
+        this.phone = phone;
+        this.address = address;
+        this.email = email;
+        this.role = role;
+        this.groupId = groupId;
+        this.birthday = birthday;
+        this.isblock = isblock;
     }
 
     public String getUsername() {
@@ -29,12 +43,20 @@ public class UserDTO implements Serializable {
         this.username = username;
     }
 
-    public String getName() {
-        return name;
+    public String getPassword() {
+        return password;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getFullname() {
+        return fullname;
+    }
+
+    public void setFullname(String fullname) {
+        this.fullname = fullname;
     }
 
     public String getPhone() {
@@ -61,12 +83,20 @@ public class UserDTO implements Serializable {
         this.email = email;
     }
 
-    public String getCode() {
-        return code;
+    public String getRole() {
+        return role;
     }
 
-    public void setCode(String code) {
-        this.code = code;
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    public String getGroupId() {
+        return groupId;
+    }
+
+    public void setGroupId(String groupId) {
+        this.groupId = groupId;
     }
 
     public Date getBirthday() {
@@ -77,11 +107,11 @@ public class UserDTO implements Serializable {
         this.birthday = birthday;
     }
 
-    public String getManager() {
-        return manager;
+    public boolean isIsblock() {
+        return isblock;
     }
 
-    public void setManager(String manager) {
-        this.manager = manager;
+    public void setIsblock(boolean isblock) {
+        this.isblock = isblock;
     }
 }
