@@ -6,7 +6,7 @@ import java.util.Date;
 public class WorkingDTO implements Serializable {
     String workId,workName,workDes,workProcess,description,status,userCreate,userHandle;
     int mark;
-    Date timeMark,timeFrom,timeTo,timeCreate;
+    String timeMark,timeFrom,timeTo,timeCreate;
     boolean confirmFinish;
 
     public WorkingDTO() {
@@ -23,7 +23,7 @@ public class WorkingDTO implements Serializable {
         this.workDes = workDes;
     }
 
-    public WorkingDTO(String workId, String workName, String workDes, String workProcess, String description, String status, String userCreate, String userHandle, int mark, Date timeMark, Date timeFrom, Date timeTo, Date timeCreate, boolean confirmFinish) {
+    public WorkingDTO(String workId, String workName, String workDes, String workProcess, String description, String status, String userCreate, String userHandle, int mark, String timeMark, String timeFrom, String timeTo, String timeCreate, boolean confirmFinish) {
         this.workId = workId;
         this.workName = workName;
         this.workDes = workDes;
@@ -112,35 +112,35 @@ public class WorkingDTO implements Serializable {
         this.mark = mark;
     }
 
-    public Date getTimeMark() {
+    public String getTimeMark() {
         return timeMark;
     }
 
-    public void setTimeMark(Date timeMark) {
+    public void setTimeMark(String timeMark) {
         this.timeMark = timeMark;
     }
 
-    public Date getTimeFrom() {
+    public String getTimeFrom() {
         return timeFrom;
     }
 
-    public void setTimeFrom(Date timeFrom) {
+    public void setTimeFrom(String timeFrom) {
         this.timeFrom = timeFrom;
     }
 
-    public Date getTimeTo() {
+    public String getTimeTo() {
         return timeTo;
     }
 
-    public void setTimeTo(Date timeTo) {
+    public void setTimeTo(String timeTo) {
         this.timeTo = timeTo;
     }
 
-    public Date getTimeCreate() {
+    public String getTimeCreate() {
         return timeCreate;
     }
 
-    public void setTimeCreate(Date timeCreate) {
+    public void setTimeCreate(String timeCreate) {
         this.timeCreate = timeCreate;
     }
 

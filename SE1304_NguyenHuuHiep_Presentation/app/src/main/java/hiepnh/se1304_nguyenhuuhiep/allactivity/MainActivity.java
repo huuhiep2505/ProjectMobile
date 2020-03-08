@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
         String role = userDAO.checkLogin(username, password);
         if (role.equals("user")){
             Intent intent = new Intent(this, UserActivity.class);
+            intent.putExtra("Username", username);
             startActivity(intent);
             finish();
         }else if(role.equals("admin")){
