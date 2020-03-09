@@ -55,7 +55,7 @@ public class UserDAO implements Serializable {
         }
         return role;
     }
-    public boolean createUser(String username,String password,String fullname, String phone, String address, String email, String birthday,String role, String groupId) throws Exception{
+    public boolean createUser(String username,String password,String fullname, String phone, String address, String email, String birthday,String role, String groupId) {
         boolean check = false;
         try {
             String sql = "Insert into Users (username,password,fullname,phone,address,email,birthday,role,isblock,groupId) Values (?,?,?,?,?,?,?,?,?,?)";
@@ -72,7 +72,9 @@ public class UserDAO implements Serializable {
             preStm.setBoolean(9,false);
             preStm.setString(10,groupId);
             check = preStm.executeUpdate() > 0;
-        }finally {
+        }catch (Exception e){
+            e.printStackTrace();
+        } finally {
             closeConnection();
         }
         return check;
@@ -121,7 +123,7 @@ public class UserDAO implements Serializable {
         String role = null;
         UserDTO dto=null;
         try {
-            String sql = "Select username,fullname,phone,address,email,birthday,role,groupId From Users";
+            String sql = "Select username,fullname,phone,address,email,birthday,role,groupId From Users Where isblock LIKE'0'";
             conn=MyConnection.getMyConnection();
             preStm=conn.prepareStatement(sql);
             rs=preStm.executeQuery();
@@ -145,28 +147,31 @@ public class UserDAO implements Serializable {
         }
         return result;
     }
-    public boolean updateUser(String password, String username, String fullname, String phone, String address, String email, Date birthday, String role, String groupId)throws Exception{
+    public boolean updateUser( String username, String fullname, String phone, String address, String email, String birthday, String role, String groupId){
         boolean check=false;
         try {
-            String sql="Update Users set password = ?, fullname = ?, phone = ?, address = ?, email = ?, birthday = ?, role = ?, groupId = ? Where username=?";
+            String sql="Update Users set fullname = ?, phone = ?, address = ?, email = ?, birthday = ?, role = ?,isblock = ?, groupId = ? Where username=?";
             conn=MyConnection.getMyConnection();
             preStm=conn.prepareStatement(sql);
-            preStm.setString(1,password);
-            preStm.setString(2, fullname);
-            preStm.setString(3, phone);
-            preStm.setString(4, address);
-            preStm.setString(5,email);
-            preStm.setDate(6, (java.sql.Date) birthday);
-            preStm.setString(7, role);
+            preStm.setString(1, fullname);
+            preStm.setString(2, phone);
+            preStm.setString(3, address);
+            preStm.setString(4,email);
+            preStm.setString(5, birthday);
+            preStm.setString(6, role);
+            preStm.setBoolean(7,false);
             preStm.setString(8, groupId);
             preStm.setString(9, username);
             check=preStm.executeUpdate()>0;
-        }finally{
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        finally{
             closeConnection();
         }
         return check;
     }
-    public boolean delete(String username) throws Exception{
+    public boolean delete(String username) {
         boolean check = false;
         try {
             String sql = "Update Users set isblock = ? Where username = ?";
@@ -176,7 +181,10 @@ public class UserDAO implements Serializable {
             preStm.setString(2, username);
             check = preStm.executeUpdate() > 0;
 
-        } finally {
+        }catch (Exception e) {
+            e.printStackTrace();
+        }finally
+        {
             closeConnection();
         }
         return check;

@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import hiepnh.se1304_nguyenhuuhiep.R;
 import hiepnh.se1304_nguyenhuuhiep.daos.UserDAO;
@@ -19,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         edtUsername = findViewById(R.id.edtUsername);
         edtPassword = findViewById(R.id.edtPassword);
+
     }
 
     public void clickToLogin(View view) {
@@ -38,4 +40,6 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
+
+
 }

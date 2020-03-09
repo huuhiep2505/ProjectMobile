@@ -40,4 +40,14 @@ public class AccountManagementActivity extends AppCompatActivity {
                                            }
         );
     }
+
+    public void clickToCreateNewAccount(View view) {
+        Intent intent = new Intent(this, CreateNewAccountActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
+    public void clickToSearchName(View view) {
+
+    }
 }
