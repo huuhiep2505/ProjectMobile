@@ -103,4 +103,52 @@ public class WorkingDAO {
         }
         return check;
     }
+
+    public List<String> getAllStatus() {
+        List<String> result = new ArrayList<>();
+        String st;
+        try {
+            String sql = "Select distinct status From Working";
+            conn= MyConnection.getMyConnection();
+            preStm=conn.prepareStatement(sql);
+            rs=preStm.executeQuery();
+
+            while (rs.next()) {
+                st = rs.getString("status");
+                result.add(st);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally{
+            closeConnection();
+        }
+        return result;
+    }
+
+    public List<WorkingDTO> searchStatus(String st, String username) {
+        List<WorkingDTO> result = new ArrayList<>();
+        WorkingDTO dto=null;
+        try {
+            String sql = "Select * From Working where status = ? and userHandle = ?";
+            conn= MyConnection.getMyConnection();
+            preStm=conn.prepareStatement(sql);
+            preStm.setString(1, st);
+            preStm.setString(2, username);
+            rs=preStm.executeQuery();
+
+            while (rs.next()) {
+                dto = new WorkingDTO(rs.getString("workId"), rs.getString("workName"), rs.getString("workDes")
+                        , rs.getString("workProcess"),rs.getString("description"), rs.getString("status")
+                        , rs.getString("userCreate"), rs.getString("userHandle"), rs.getInt("mark")
+                        , rs.getString("timeMark"), rs.getString("timeFrom")
+                        ,rs.getString("timeTo"), rs.getString("timeCreate"),  rs.getBoolean("confirmFinish"));
+                result.add(dto);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally{
+            closeConnection();
+        }
+        return result;
+    }
 }

@@ -16,6 +16,11 @@
         <activity android:name=".allactivity.ShowAccountManagementActivity" />
         <activity android:name=".allactivity.AccountManagementActivity" />
         <activity android:name=".allactivity.UpdateStatusActivity" />
+
+        <activity android:name=".allactivity.UpdateStatusActivity"></activity>
+
+        <activity android:name=".allactivity.UserSearchActivity"></activity>
+        <activity android:name=".allactivity.UpdateStatusActivity" />
         <activity android:name=".allactivity.AdminActivity" />
         <activity android:name=".allactivity.WorkingDetailActivity" />
         <activity android:name=".allactivity.UserActivity" />
