@@ -6,8 +6,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import hiepnh.se1304_nguyenhuuhiep.R;
@@ -19,15 +22,21 @@ public class AccountManagementActivity extends AppCompatActivity {
     private ListView listAccount;
     private UserAdapter adapter;
     private UserDAO dao;
+    private EditText edtUsername;
+    List<UserDTO> result;
+    List<UserDTO> temp = new ArrayList<>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_account_management);
         listAccount = findViewById(R.id.listAccount);
+        edtUsername = findViewById(R.id.edtUsername);
         dao = new UserDAO();
-        List<UserDTO> result = (List<UserDTO>) dao.getAccountManagement();
-        adapter = new UserAdapter();
-        adapter.setUserDTOList(result);
+        result = (List<UserDTO>) dao.getAccountManagement();
+//        adapter = new UserAdapter();
+//        adapter.setUserDTOList(result);
+        adapter = new UserAdapter(result);
         listAccount.setAdapter(adapter);
         listAccount.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                                                @Override
@@ -49,5 +58,14 @@ public class AccountManagementActivity extends AppCompatActivity {
 
     public void clickToSearchName(View view) {
 
+        String name = edtUsername.getText().toString();
+
+        for (UserDTO dto : result) {
+            if(dto.getUsername().toUpperCase().contains(name.toUpperCase())){
+                temp.add(dto);
+            }
+        }
+       adapter = new UserAdapter(temp);
+        listAccount.setAdapter(adapter);
     }
 }

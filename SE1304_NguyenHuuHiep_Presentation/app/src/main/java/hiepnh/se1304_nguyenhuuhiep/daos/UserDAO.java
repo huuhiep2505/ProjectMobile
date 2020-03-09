@@ -79,7 +79,7 @@ public class UserDAO implements Serializable {
         }
         return check;
     }
-    public UserDTO getUser(String username) throws Exception {
+    public UserDTO getUser(String username)  {
         String phone = null;
         String address = null;
         String email = null;
@@ -106,6 +106,8 @@ public class UserDAO implements Serializable {
                 groupId = rs.getString("groupId");
                 dto = new UserDTO(username,fullname,phone,address,email,role,groupId,birthday);
             }
+        }catch (Exception e){
+           e.printStackTrace();
         }finally{
             closeConnection();
         }

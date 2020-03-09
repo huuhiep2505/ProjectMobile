@@ -30,6 +30,10 @@ public class UserAdapter extends BaseAdapter {
         return userDTOList.indexOf(i);
     }
 
+    public UserAdapter(List<UserDTO> userDTOList) {
+        this.userDTOList = userDTOList;
+    }
+
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
         if (view == null) {
@@ -46,7 +50,7 @@ public class UserAdapter extends BaseAdapter {
         return view;
     }
 
-    public void setUserDTOList(List<UserDTO> userDTOList) {
-        this.userDTOList = userDTOList;
-    }
+//    public void setUserDTOList(List<UserDTO> userDTOList) {
+//        this.userDTOList = userDTOList;
+//    }
 }
