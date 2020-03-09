@@ -20,14 +20,11 @@
             android:textStyle="bold"
             android:textSize="20dp"
             android:gravity="center"/>`
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="username"/>
         <EditText
             android:id="@+id/edtUsername"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:hint="Search Fullname"/>
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
