@@ -2,16 +2,18 @@ package hiepnh.se1304_nguyenhuuhiep.allactivity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.DatePicker;
 import android.widget.ListView;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import hiepnh.se1304_nguyenhuuhiep.R;
@@ -19,13 +21,14 @@ import hiepnh.se1304_nguyenhuuhiep.alladapter.WorkAdapter;
 import hiepnh.se1304_nguyenhuuhiep.daos.WorkingDAO;
 import hiepnh.se1304_nguyenhuuhiep.dtos.WorkingDTO;
 
-public class UserSearchActivity extends AppCompatActivity {
+public class UserSearchActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener{
 
     private Spinner spStatus;
     private String stringSelected;
     private WorkingDAO dao;
     private ListView listSearch;
     private WorkAdapter adapter;
+    private TextView txtFrom, txtTo;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,5 +64,16 @@ public class UserSearchActivity extends AppCompatActivity {
         }else {
             Toast.makeText(this, "Not found", Toast.LENGTH_LONG).show();
         }
+    }
+
+    @Override
+    public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
+        String result = i2 + "/" + (i1 + 1) + "/" + i;
+        txtFrom = findViewById(R.id.txtFrom);
+        txtFrom.setText(result);
+    }
+
+    public void searchTime(View view) {
+
     }
 }
