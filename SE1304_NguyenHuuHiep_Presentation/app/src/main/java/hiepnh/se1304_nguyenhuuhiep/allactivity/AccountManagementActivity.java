@@ -22,7 +22,7 @@ public class AccountManagementActivity extends AppCompatActivity {
     private ListView listAccount;
     private UserAdapter adapter;
     private UserDAO dao;
-    private EditText edtUsername;
+    private EditText edtFullname;
     List<UserDTO> result;
     List<UserDTO> temp = new ArrayList<>();
 
@@ -31,7 +31,7 @@ public class AccountManagementActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_account_management);
         listAccount = findViewById(R.id.listAccount);
-        edtUsername = findViewById(R.id.edtUsername);
+        edtFullname = findViewById(R.id.edtFullname);
         dao = new UserDAO();
         result = (List<UserDTO>) dao.getAccountManagement();
 //        adapter = new UserAdapter();
@@ -57,11 +57,11 @@ public class AccountManagementActivity extends AppCompatActivity {
     }
 
     public void clickToSearchName(View view) {
-
-        String name = edtUsername.getText().toString();
+        temp = new ArrayList<>();
+        String name = edtFullname.getText().toString();
 
         for (UserDTO dto : result) {
-            if(dto.getUsername().toUpperCase().contains(name.toUpperCase())){
+            if(dto.getFullname().toUpperCase().contains(name.toUpperCase())){
                 temp.add(dto);
             }
         }

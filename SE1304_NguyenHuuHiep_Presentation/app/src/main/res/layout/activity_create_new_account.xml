@@ -14,86 +14,67 @@
         android:text="Create New Account"
         android:textSize="30dp"
         android:textStyle="bold" />
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Username: "/>
     <EditText
         android:id="@+id/edtUsername"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:hint="Username"
+        android:gravity="center"
         android:inputType="text"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Password: "/>
     <EditText
         android:id="@+id/edtPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:hint="Password"
+        android:gravity="center"
         android:inputType="textPassword" />
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Fullname: "/>
     <EditText
         android:id="@+id/edtFullname"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:hint="Fullname"
+        android:gravity="center"
         android:inputType="text" />
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Phone: "/>
     <EditText
         android:id="@+id/edtPhone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:hint="Phone"
+        android:gravity="center"
         android:inputType="text" />
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Address: "/>
     <EditText
         android:id="@+id/edtAddress"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:hint="Address"
+        android:gravity="center"
         android:inputType="text" />
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Email: "/>
     <EditText
         android:id="@+id/edtEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:hint="Email"
+        android:gravity="center"
         android:inputType="text" />
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Birthday: "/>
     <EditText
         android:id="@+id/edtBirthday"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:hint="Birthday"
+        android:gravity="center"
         android:inputType="date" />
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Role: "/>
-    <EditText
+    <Spinner
         android:id="@+id/edtRole"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="text" />
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Group: "/>
+        android:layout_gravity="center"
+        android:gravity="center" />
     <EditText
         android:id="@+id/edtGroupId"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:hint="Group"
+        android:gravity="center"
         android:inputType="text" />
     <Button
         android:layout_width="match_parent"
