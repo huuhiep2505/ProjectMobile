@@ -29,6 +29,7 @@ public class UpdateStatusActivity extends AppCompatActivity {
         List<String> list = new ArrayList<>();
         list.add("Start");
         list.add("Process");
+        list.add("Finish");
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, list);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spStatus.setAdapter(adapter);

@@ -56,4 +56,10 @@ public class UserActivity extends AppCompatActivity {
         intent.putExtra("Username", username);
         startActivity(intent);
     }
+
+    public void clickToCreateWork(View view) {
+        Intent intent = new Intent(this, CreateWorkActivity.class);
+        intent.putExtra("Username", username);
+        startActivity(intent);
+    }
 }

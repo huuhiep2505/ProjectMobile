@@ -3,6 +3,7 @@ package hiepnh.se1304_nguyenhuuhiep.allactivity;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
+import android.app.DialogFragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -29,6 +30,8 @@ public class UserSearchActivity extends AppCompatActivity implements DatePickerD
     private ListView listSearch;
     private WorkAdapter adapter;
     private TextView txtFrom, txtTo;
+    private String timeFrom, timeTo;
+    private boolean toFlag;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,14 +69,49 @@ public class UserSearchActivity extends AppCompatActivity implements DatePickerD
         }
     }
 
+
+    //Search Time
     @Override
     public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
-        String result = i2 + "/" + (i1 + 1) + "/" + i;
-        txtFrom = findViewById(R.id.txtFrom);
-        txtFrom.setText(result);
+        int month = i1 + 1;
+        String result = i2 + "/" + month + "/" + i;
+        if (toFlag){
+            txtTo = findViewById(R.id.txtTo);
+            txtTo.setText(result);
+            timeTo = result;
+        } else {
+            txtFrom = findViewById(R.id.txtFrom);
+            txtFrom.setText(result);
+            timeFrom = result;
+        }
     }
 
     public void searchTime(View view) {
-
+        if (timeFrom != null && timeTo != null){
+            Intent intent = this.getIntent();
+            String username = intent.getStringExtra("Username");
+            List<WorkingDTO> listResult = dao.searchTime(timeFrom, timeTo, username);
+            if (listResult.size() > 0){
+                listSearch = findViewById(R.id.listWorkSearch);
+                adapter = new WorkAdapter();
+                adapter.setWorkingDTOList(listResult);
+                listSearch.setAdapter(adapter);
+            }else {
+                Toast.makeText(this, "Not found", Toast.LENGTH_LONG).show();
+            }
+        }
     }
+
+    public void getFrom(View view) {
+        DialogFragment dateFragment = new DatePickFragment();
+        dateFragment.show(getFragmentManager(), "Date From: ");
+        toFlag = false;
+    }
+
+    public void getTo(View view) {
+        DialogFragment dateFragment = new DatePickFragment();
+        dateFragment.show(getFragmentManager(), "Date To: ");
+        toFlag = true;
+    }
+
 }

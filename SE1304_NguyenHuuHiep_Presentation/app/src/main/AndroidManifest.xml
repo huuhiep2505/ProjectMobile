@@ -11,14 +11,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".allactivity.UpdateInformationAccountActivity"></activity>
+        <activity android:name=".allactivity.CreateWorkActivity"></activity>
+        <activity android:name=".allactivity.UpdateInformationAccountActivity" />
         <activity android:name=".allactivity.CreateNewAccountActivity" />
         <activity android:name=".allactivity.ShowAccountManagementActivity" />
         <activity android:name=".allactivity.AccountManagementActivity" />
         <activity android:name=".allactivity.UpdateStatusActivity" />
-
-        <activity android:name=".allactivity.UserSearchActivity"></activity>
-
+        <activity android:name=".allactivity.UserSearchActivity" />
         <activity android:name=".allactivity.AdminActivity" />
         <activity android:name=".allactivity.WorkingDetailActivity" />
         <activity android:name=".allactivity.UserActivity" />
