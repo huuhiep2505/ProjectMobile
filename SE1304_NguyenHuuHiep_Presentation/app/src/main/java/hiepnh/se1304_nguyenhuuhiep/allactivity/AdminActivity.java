@@ -20,4 +20,9 @@ public class AdminActivity extends AppCompatActivity {
         Intent intent = new Intent(this,AccountManagementActivity.class);
         startActivity(intent);
     }
+
+    public void clickToGroupManagement(View view) {
+        Intent intent = new Intent(this, CreateGroupActivity.class);
+        startActivity(intent);
+    }
 }

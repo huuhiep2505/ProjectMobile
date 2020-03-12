@@ -1,7 +1,6 @@
 package hiepnh.se1304_nguyenhuuhiep.dtos;
 
 import java.io.Serializable;
-import java.util.Date;
 
 public class UserDTO implements Serializable {
     String username,password,fullname,phone,address,email,role,groupId;
@@ -11,10 +10,8 @@ public class UserDTO implements Serializable {
     public UserDTO() {
     }
 
-    public UserDTO(String username, String fullname, String role) {
+    public UserDTO(String username) {
         this.username = username;
-        this.fullname = fullname;
-        this.role = role;
     }
 
     public UserDTO(String username, String fullname, String phone, String address, String email, String role, String groupId, String birthday) {
