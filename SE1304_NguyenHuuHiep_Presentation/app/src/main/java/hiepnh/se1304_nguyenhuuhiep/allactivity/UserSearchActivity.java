@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -29,7 +30,7 @@ public class UserSearchActivity extends AppCompatActivity implements DatePickerD
     private WorkingDAO dao;
     private ListView listSearch;
     private WorkAdapter adapter;
-    private TextView txtFrom, txtTo;
+    private EditText edtFrom, edtTo;
     private String timeFrom, timeTo;
     private boolean toFlag;
     @Override
@@ -76,12 +77,12 @@ public class UserSearchActivity extends AppCompatActivity implements DatePickerD
         int month = i1 + 1;
         String result = i2 + "/" + month + "/" + i;
         if (toFlag){
-            txtTo = findViewById(R.id.txtTo);
-            txtTo.setText(result);
+            edtTo = findViewById(R.id.edtTo);
+            edtTo.setText(result);
             timeTo = result;
         } else {
-            txtFrom = findViewById(R.id.txtFrom);
-            txtFrom.setText(result);
+            edtFrom = findViewById(R.id.edtFrom);
+            edtFrom.setText(result);
             timeFrom = result;
         }
     }
@@ -99,6 +100,8 @@ public class UserSearchActivity extends AppCompatActivity implements DatePickerD
             }else {
                 Toast.makeText(this, "Not found", Toast.LENGTH_LONG).show();
             }
+        } else {
+            Toast.makeText(this, "Time is empty", Toast.LENGTH_LONG).show();
         }
     }
 

@@ -12,6 +12,7 @@ import hiepnh.se1304_nguyenhuuhiep.dtos.WorkingDTO;
 
 public class WorkingDetailActivity extends AppCompatActivity {
 
+    private String username;
     private WorkingDTO dto;
     private TextView txtWorkId,txtWorkName,txtWorkDes,txtWorkProcess,txtDescription,txtStatus,txtUserCreate,txtUserHandle
             ,txtTimeMark,txtTimeFrom,txtTimeTo,txtTimeCreate, txtConfirmFinish, txtMark;
@@ -21,6 +22,7 @@ public class WorkingDetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_working_detail);
         Intent intent = this.getIntent();
         dto = (WorkingDTO) intent.getSerializableExtra("DTO");
+        username = (String) intent.getSerializableExtra("Username");
         getViewId();
         setTextView();
     }
@@ -28,6 +30,7 @@ public class WorkingDetailActivity extends AppCompatActivity {
     public void clickToUpdate(View view) {
         Intent intent = new Intent(this, UpdateStatusActivity.class);
         intent.putExtra("workId", dto.getWorkId());
+        intent.putExtra("Username", username);
         startActivity(intent);
         finish();
     }

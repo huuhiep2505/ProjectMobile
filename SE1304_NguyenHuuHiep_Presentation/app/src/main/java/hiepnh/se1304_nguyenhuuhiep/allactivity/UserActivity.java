@@ -40,6 +40,7 @@ public class UserActivity extends AppCompatActivity {
                 WorkingDTO result = (dao.getWorking(dto.getWorkId()));
                 Intent intentShow = new Intent(UserActivity.this, WorkingDetailActivity.class);
                 intentShow.putExtra("DTO", result);
+                intentShow.putExtra("Username", username);
                 startActivity(intentShow);
             }
         });

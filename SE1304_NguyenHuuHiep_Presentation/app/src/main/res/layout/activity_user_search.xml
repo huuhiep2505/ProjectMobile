@@ -39,24 +39,26 @@
             android:text="Search"
             android:onClick="searchTime"/>
         <TextView
-            android:id="@+id/txtFrom"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="From: "/>
-        <Button
+        <EditText
+            android:id="@+id/edtFrom"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Choose"
+            android:hint="Choose"
+            android:inputType="date"
             android:onClick="getFrom"/>
         <TextView
-            android:id="@+id/txtTo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="To: "/>
-        <Button
+        <EditText
+            android:id="@+id/edtTo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Choose"
+            android:hint="Choose"
+            android:inputType="date"
             android:onClick="getTo"/>
     </LinearLayout>
     <ListView

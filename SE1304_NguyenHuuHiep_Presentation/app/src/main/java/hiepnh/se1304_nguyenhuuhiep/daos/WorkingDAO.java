@@ -3,6 +3,7 @@ package hiepnh.se1304_nguyenhuuhiep.daos;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -155,18 +156,18 @@ public class WorkingDAO {
         return result;
     }
 
-    public List<WorkingDTO> searchTime(String tFrom, String tT, String username) {
+    public List<WorkingDTO> searchTime(String tFrom, String tTo, String username) {
         List<WorkingDTO> result = new ArrayList<>();
         WorkingDTO dto=null;
         try {
             String sql = "Select workId, workName, workDes, workProcess, description, status" +
                     ", userCreate, userHandle, mark, timeMark, timeFrom, timeTo, timeCreate" +
-                    ", confirmFinish From Working where timeFrom  and userHandle = ?";
+                    ", confirmFinish From Working where timeFrom >= ? and timeTo <= ? and userHandle = ?";
             conn= MyConnection.getMyConnection();
             preStm=conn.prepareStatement(sql);
             preStm.setString(1, tFrom);
-            //chua xong
-            preStm.setString(2, username);
+            preStm.setString(2, tTo);
+            preStm.setString(3, username);
             rs=preStm.executeQuery();
 
             while (rs.next()) {
@@ -208,6 +209,24 @@ public class WorkingDAO {
         }catch (Exception e){
             e.printStackTrace();
         }finally{
+            closeConnection();
+        }
+        return check;
+    }
+
+    public boolean setInfoUpdate(Timestamp timeUpdate, String userUpdate, String workId){
+        boolean check = false;
+        try {
+            String sql = "Update Working set timeUpdate = ?, userUpdate = ? where workId = ?";
+            conn = MyConnection.getMyConnection();
+            preStm = conn.prepareStatement(sql);
+            preStm.setTimestamp(1, timeUpdate);
+            preStm.setString(2, userUpdate);
+            preStm.setString(3, workId);
+            check = preStm.executeUpdate() > 0;
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
             closeConnection();
         }
         return check;
