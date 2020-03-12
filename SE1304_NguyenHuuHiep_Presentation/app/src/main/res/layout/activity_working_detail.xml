@@ -6,36 +6,157 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".allactivity.WorkingDetailActivity">
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:scrollbars="vertical"
-        android:layout_weight="1">
-
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Detail Activity"
-        android:textSize="20dp"
+        android:text="Detail Working"
+        android:textSize="40dp"
         android:textStyle="bold"
         android:gravity="center"/>
-    <TextView
-        android:id="@+id/txtResult"
+
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="0"
-        android:gravity="center"
-        android:orientation="horizontal">
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:scrollbars="vertical"
+            android:layout_weight="1">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Work ID: "
+            android:textSize="20dp"/>
+            <TextView
+                android:id="@+id/txtWorkID"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Work Name: "
+            android:textSize="20dp"/>
+            <TextView
+                android:id="@+id/txtWorkName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Work Description: "
+            android:textSize="20dp"/>
+            <TextView
+                android:id="@+id/txtWorkDes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Work Process: "
+            android:textSize="20dp"/>
+            <TextView
+                android:id="@+id/txtWorkProcess"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Mark Description: "
+            android:textSize="20dp"/>
+            <TextView
+                android:id="@+id/txtDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Status: "
+            android:textSize="20dp"/>
+            <TextView
+                android:id="@+id/txtStatus"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="User Create"
+            android:textSize="20dp"/>
+            <TextView
+                android:id="@+id/txtUserCreate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="User Handle: "
+            android:textSize="20dp"/>
+            <TextView
+                android:id="@+id/txtUserHandle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Mark: "
+            android:textSize="20dp"/>
+            <TextView
+                android:id="@+id/txtMark"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Time Mark: "
+            android:textSize="20dp"/>
+            <TextView
+                android:id="@+id/txtTimeMark"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Time From: "
+            android:textSize="20dp"/>
+            <TextView
+                android:id="@+id/txtTimeFrom"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Time To: "
+            android:textSize="20dp"/>
+            <TextView
+                android:id="@+id/txtTimeTo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Time Create: "
+            android:textSize="20dp"/>
+            <TextView
+                android:id="@+id/txtTimeCreate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Confirm Finish: "
+            android:textSize="20dp"/>
+            <TextView
+                android:id="@+id/txtConfirmFinish"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Update Status"
+            android:layout_gravity="center"
             android:onClick="clickToUpdate"/>
 
-    </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>

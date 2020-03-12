@@ -33,7 +33,7 @@ public class AccountManagementActivity extends AppCompatActivity {
         listAccount = findViewById(R.id.listAccount);
         edtFullname = findViewById(R.id.edtFullname);
         dao = new UserDAO();
-        result = (List<UserDTO>) dao.getAccountManagement();
+        result = dao.getAccountManagement();
 //        adapter = new UserAdapter();
 //        adapter.setUserDTOList(result);
         adapter = new UserAdapter(result);

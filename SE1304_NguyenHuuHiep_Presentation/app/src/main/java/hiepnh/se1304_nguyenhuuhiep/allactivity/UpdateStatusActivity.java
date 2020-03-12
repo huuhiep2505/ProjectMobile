@@ -10,6 +10,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,6 +30,7 @@ public class UpdateStatusActivity extends AppCompatActivity {
         List<String> list = new ArrayList<>();
         list.add("Start");
         list.add("Process");
+        list.add("Finish");
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, list);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spStatus.setAdapter(adapter);
@@ -48,9 +50,12 @@ public class UpdateStatusActivity extends AppCompatActivity {
     public void updateStatus(View view) {
         Intent intent = this.getIntent();
         String id = intent.getStringExtra("workId");
+        String username = intent.getStringExtra("Username");
         WorkingDAO dao = new WorkingDAO();
         boolean check = dao.updateStatus(stringSelected, id);
-        if (check){
+        Timestamp timeUpdate = new Timestamp(System.currentTimeMillis());
+        boolean checkUpdate = dao.setInfoUpdate(timeUpdate,username,id);
+        if (check && checkUpdate){
             Toast.makeText(this, "Update Success", Toast.LENGTH_LONG).show();
             WorkingDTO result = (dao.getWorking(id));
             Intent intentShow = new Intent(this, WorkingDetailActivity.class);

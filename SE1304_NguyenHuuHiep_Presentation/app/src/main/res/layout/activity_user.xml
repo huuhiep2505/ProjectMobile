@@ -18,7 +18,7 @@
             android:layout_height="wrap_content"
             android:text="List Working"
             android:textStyle="bold"
-            android:textSize="20dp"
+            android:textSize="40dp"
             android:gravity="center"/>
 
         <ListView
@@ -45,5 +45,10 @@
             android:layout_height="wrap_content"
             android:text="Search"
             android:onClick="clickToSearch"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Create Work"
+            android:onClick="clickToCreateWork"/>
     </LinearLayout>
 </LinearLayout>

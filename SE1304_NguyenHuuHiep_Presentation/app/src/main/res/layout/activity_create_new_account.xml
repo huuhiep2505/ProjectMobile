@@ -55,7 +55,7 @@
         android:layout_height="wrap_content"
         android:hint="Email"
         android:gravity="center"
-        android:inputType="text" />
+        android:inputType="textEmailAddress" />
     <EditText
         android:id="@+id/edtBirthday"
         android:layout_width="match_parent"

@@ -40,6 +40,7 @@ public class UserActivity extends AppCompatActivity {
                 WorkingDTO result = (dao.getWorking(dto.getWorkId()));
                 Intent intentShow = new Intent(UserActivity.this, WorkingDetailActivity.class);
                 intentShow.putExtra("DTO", result);
+                intentShow.putExtra("Username", username);
                 startActivity(intentShow);
             }
         });
@@ -53,6 +54,12 @@ public class UserActivity extends AppCompatActivity {
 
     public void clickToSearch(View view) {
         Intent intent = new Intent(this, UserSearchActivity.class);
+        intent.putExtra("Username", username);
+        startActivity(intent);
+    }
+
+    public void clickToCreateWork(View view) {
+        Intent intent = new Intent(this, CreateWorkActivity.class);
         intent.putExtra("Username", username);
         startActivity(intent);
     }

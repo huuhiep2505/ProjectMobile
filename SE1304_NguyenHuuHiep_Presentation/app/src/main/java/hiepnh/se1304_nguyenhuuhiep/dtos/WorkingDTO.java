@@ -1,13 +1,17 @@
 package hiepnh.se1304_nguyenhuuhiep.dtos;
 
 import java.io.Serializable;
+import java.sql.Timestamp;
 import java.util.Date;
 
+import hiepnh.se1304_nguyenhuuhiep.utils.CheckData;
+
 public class WorkingDTO implements Serializable {
-    String workId,workName,workDes,workProcess,description,status,userCreate,userHandle;
-    int mark;
-    String timeMark,timeFrom,timeTo,timeCreate;
-    boolean confirmFinish;
+    private String workId,workName,workDes,workProcess,description,status,userCreate,userHandle;
+    private String viewTimeMark, viewTimeFrom, viewTimeTo, viewTimeCreate;
+    private int mark;
+    private Timestamp timeMark,timeFrom,timeTo,timeCreate;
+    private boolean confirmFinish;
 
     public WorkingDTO() {
     }
@@ -23,7 +27,7 @@ public class WorkingDTO implements Serializable {
         this.workDes = workDes;
     }
 
-    public WorkingDTO(String workId, String workName, String workDes, String workProcess, String description, String status, String userCreate, String userHandle, int mark, String timeMark, String timeFrom, String timeTo, String timeCreate, boolean confirmFinish) {
+    public WorkingDTO(String workId, String workName, String workDes, String workProcess, String description, String status, String userCreate, String userHandle, int mark, Timestamp timeMark, Timestamp timeFrom, Timestamp timeTo, Timestamp timeCreate, boolean confirmFinish) {
         this.workId = workId;
         this.workName = workName;
         this.workDes = workDes;
@@ -38,6 +42,19 @@ public class WorkingDTO implements Serializable {
         this.timeTo = timeTo;
         this.timeCreate = timeCreate;
         this.confirmFinish = confirmFinish;
+    }
+
+    public WorkingDTO(String workId, String workName, String workDes, String workProcess, String status, String userCreate, String userHandle, Timestamp timeFrom, Timestamp timeTo, Timestamp timeCreate) {
+        this.workId = workId;
+        this.workName = workName;
+        this.workDes = workDes;
+        this.workProcess = workProcess;
+        this.status = status;
+        this.userCreate = userCreate;
+        this.userHandle = userHandle;
+        this.timeFrom = timeFrom;
+        this.timeTo = timeTo;
+        this.timeCreate = timeCreate;
     }
 
     public String getWorkId() {
@@ -112,35 +129,35 @@ public class WorkingDTO implements Serializable {
         this.mark = mark;
     }
 
-    public String getTimeMark() {
+    public Timestamp getTimeMark() {
         return timeMark;
     }
 
-    public void setTimeMark(String timeMark) {
+    public void setTimeMark(Timestamp timeMark) {
         this.timeMark = timeMark;
     }
 
-    public String getTimeFrom() {
+    public Timestamp getTimeFrom() {
         return timeFrom;
     }
 
-    public void setTimeFrom(String timeFrom) {
+    public void setTimeFrom(Timestamp timeFrom) {
         this.timeFrom = timeFrom;
     }
 
-    public String getTimeTo() {
+    public Timestamp getTimeTo() {
         return timeTo;
     }
 
-    public void setTimeTo(String timeTo) {
+    public void setTimeTo(Timestamp timeTo) {
         this.timeTo = timeTo;
     }
 
-    public String getTimeCreate() {
+    public Timestamp getTimeCreate() {
         return timeCreate;
     }
 
-    public void setTimeCreate(String timeCreate) {
+    public void setTimeCreate(Timestamp timeCreate) {
         this.timeCreate = timeCreate;
     }
 
@@ -150,5 +167,41 @@ public class WorkingDTO implements Serializable {
 
     public void setConfirmFinish(boolean confirmFinish) {
         this.confirmFinish = confirmFinish;
+    }
+
+    public String getViewTimeMark() {
+        viewTimeMark = CheckData.viewTime(timeMark);
+        return viewTimeMark;
+    }
+
+    public void setViewTimeMark(String viewTimeMark) {
+        this.viewTimeMark = viewTimeMark;
+    }
+
+    public String getViewTimeFrom() {
+        viewTimeFrom = CheckData.viewTime(timeFrom);
+        return viewTimeFrom;
+    }
+
+    public void setViewTimeFrom(String viewTimeFrom) {
+        this.viewTimeFrom = viewTimeFrom;
+    }
+
+    public String getViewTimeTo() {
+        viewTimeTo = CheckData.viewTime(timeTo);
+        return viewTimeTo;
+    }
+
+    public void setViewTimeTo(String viewTimeTo) {
+        this.viewTimeTo = viewTimeTo;
+    }
+
+    public String getViewTimeCreate() {
+        viewTimeCreate = CheckData.viewTime(timeCreate);
+        return viewTimeCreate;
+    }
+
+    public void setViewTimeCreate(String viewTimeCreate) {
+        this.viewTimeCreate = viewTimeCreate;
     }
 }
