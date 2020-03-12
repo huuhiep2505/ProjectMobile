@@ -19,12 +19,16 @@ import java.util.Calendar;
 import java.util.List;
 
 import hiepnh.se1304_nguyenhuuhiep.R;
+import hiepnh.se1304_nguyenhuuhiep.daos.GroupDAO;
 import hiepnh.se1304_nguyenhuuhiep.daos.UserDAO;
+import hiepnh.se1304_nguyenhuuhiep.dtos.GroupDTO;
 
 public class CreateNewAccountActivity extends AppCompatActivity {
-    EditText edtUsername, edtPassword,edtFullname,edtPhone,edtAddress,edtEmail,edtBirthday,edtGroupId;
-    Spinner edtRole;
-    private String stringSelected;
+    private EditText edtUsername, edtPassword,edtFullname,edtPhone,edtAddress,edtEmail,edtBirthday;
+    private Spinner edtRole,spGroup;
+    private String stringSelected, stringSelectedGroup;
+    private GroupDAO groupDAO;
+    private List listGroup;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,7 +65,23 @@ public class CreateNewAccountActivity extends AppCompatActivity {
 
             }
         });
-        edtGroupId = findViewById(R.id.edtGroupId);
+        spGroup = findViewById(R.id.spGroup);
+        groupDAO = new GroupDAO();
+        listGroup = groupDAO.getGroup();
+        ArrayAdapter<GroupDTO> adapterGroup = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, listGroup);
+        adapterGroup.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spGroup.setAdapter(adapterGroup);
+        spGroup.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                stringSelectedGroup = adapterView.getItemAtPosition(i).toString();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
     }
 
     private void chooseDate(){
@@ -90,8 +110,8 @@ public class CreateNewAccountActivity extends AppCompatActivity {
         String email = edtEmail.getText().toString();
         String birthday = edtBirthday.getText().toString();
       //  String role = edtRole.getTransitionName().toString();
-        String group = edtGroupId.getText().toString();
-        boolean check = userDAO.createUser(username,password,fullname,phone,address,email,birthday,stringSelected,group);
+      //  String group = edtGroupId.getText().toString();
+        boolean check = userDAO.createUser(username,password,fullname,phone,address,email,birthday,stringSelected,stringSelectedGroup);
         if(check){
             Toast.makeText(this,"Create success", Toast.LENGTH_LONG).show();
 

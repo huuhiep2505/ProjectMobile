@@ -87,7 +87,7 @@ public class UserDAO implements Serializable {
         String username = null;
         UserDTO dto= null;
         try {
-            String sql = "Select username From Users Where isblock LIKE '0' and role LIKE 'user' and groupId is null";
+            String sql = "Select username From Users Where isblock LIKE '0' and role LIKE 'user' and groupId LIKE 'waiting'";
             conn=MyConnection.getMyConnection();
             preStm=conn.prepareStatement(sql);
             rs=preStm.executeQuery();

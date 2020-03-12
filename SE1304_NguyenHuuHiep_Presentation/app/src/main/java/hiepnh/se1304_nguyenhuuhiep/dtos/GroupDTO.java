@@ -8,6 +8,10 @@ public class GroupDTO implements Serializable {
     public GroupDTO() {
     }
 
+    public GroupDTO(String groupId) {
+        this.groupId = groupId;
+    }
+
     public GroupDTO(String groupId, String groupName, String username) {
         this.groupId = groupId;
         this.groupName = groupName;

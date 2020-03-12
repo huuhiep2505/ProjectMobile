@@ -69,13 +69,12 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:gravity="center" />
-    <EditText
-        android:id="@+id/edtGroupId"
+    <Spinner
+        android:id="@+id/spGroup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Group"
-        android:gravity="center"
-        android:inputType="text" />
+        android:layout_gravity="center"
+        android:gravity="center" />
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

@@ -4,8 +4,11 @@ import java.io.Serializable;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 import hiepnh.se1304_nguyenhuuhiep.db.MyConnection;
+import hiepnh.se1304_nguyenhuuhiep.dtos.GroupDTO;
 
 public class GroupDAO implements Serializable {
     private Connection conn = null;
@@ -47,5 +50,29 @@ public class GroupDAO implements Serializable {
             closeConnection();
         }
         return check;
+    }
+    public List<String> getGroup()  {
+        List<String> result = new ArrayList<>();
+        String groupId = null;
+        GroupDTO dto= null;
+        try {
+            String sql = "Select groupId From Groups";
+            conn=MyConnection.getMyConnection();
+            preStm=conn.prepareStatement(sql);
+            rs=preStm.executeQuery();
+
+            while (rs.next()) {
+                groupId = rs.getString("groupId");
+
+                dto = new GroupDTO(groupId);
+                String id = dto.getGroupId();
+                result.add(id);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally{
+            closeConnection();
+        }
+        return result;
     }
 }
