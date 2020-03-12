@@ -150,13 +150,25 @@
                 android:id="@+id/txtConfirmFinish"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Update Status"
-            android:layout_gravity="center"
-            android:onClick="clickToUpdate"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center">
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Update Status"
+                    android:layout_gravity="center"
+                    android:onClick="clickToUpdate"/>
 
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Update Information"
+                    android:layout_gravity="center"
+                    android:onClick="clickToUpdateInfo"/>
+            </LinearLayout>
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

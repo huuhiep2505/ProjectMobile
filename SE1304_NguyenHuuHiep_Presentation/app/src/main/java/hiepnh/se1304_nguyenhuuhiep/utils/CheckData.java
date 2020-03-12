@@ -8,7 +8,7 @@ import java.util.Calendar;
 public class CheckData {
     public static String viewTime(Timestamp time){
         if (time != null){
-            SimpleDateFormat sp = new SimpleDateFormat("dd-MM-yyyy");
+            SimpleDateFormat sp = new SimpleDateFormat("dd/MM/yyyy");
             Date view = new Date(time.getTime());
             return sp.format(view);
         }

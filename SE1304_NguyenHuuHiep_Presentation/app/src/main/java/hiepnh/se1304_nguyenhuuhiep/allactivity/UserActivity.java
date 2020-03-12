@@ -1,5 +1,6 @@
 package hiepnh.se1304_nguyenhuuhiep.allactivity;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -61,6 +62,19 @@ public class UserActivity extends AppCompatActivity {
     public void clickToCreateWork(View view) {
         Intent intent = new Intent(this, CreateWorkActivity.class);
         intent.putExtra("Username", username);
-        startActivity(intent);
+        startActivityForResult(intent, 123);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 123){
+            if (resultCode == RESULT_OK){
+                List<WorkingDTO> result = dao.getListWorking(username);
+                adapter = new WorkAdapter();
+                adapter.setWorkingDTOList(result);
+                listWorking.setAdapter(adapter);
+            }
+        }
     }
 }

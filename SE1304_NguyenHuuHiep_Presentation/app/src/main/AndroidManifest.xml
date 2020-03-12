@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".allactivity.ChooseUserActivity"></activity>
+        <activity android:name=".allactivity.UpdateWorkingActivity"></activity>
+        <activity android:name=".allactivity.ChooseUserActivity" />
         <activity android:name=".allactivity.CreateGroupActivity" />
         <activity android:name=".allactivity.UpdateInformationAccountActivity" />
         <activity android:name=".allactivity.CreateNewAccountActivity" />
@@ -22,6 +23,7 @@
         <activity android:name=".allactivity.AdminActivity" />
         <activity android:name=".allactivity.WorkingDetailActivity" />
         <activity android:name=".allactivity.UserActivity" />
+        <activity android:name=".allactivity.CreateWorkActivity" />
         <activity android:name=".allactivity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

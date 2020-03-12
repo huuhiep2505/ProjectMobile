@@ -106,26 +106,26 @@ public class WorkingDAO {
         return check;
     }
 
-    public List<String> getAllStatus() {
-        List<String> result = new ArrayList<>();
-        String st;
-        try {
-            String sql = "Select distinct status From Working";
-            conn= MyConnection.getMyConnection();
-            preStm=conn.prepareStatement(sql);
-            rs=preStm.executeQuery();
-
-            while (rs.next()) {
-                st = rs.getString("status");
-                result.add(st);
-            }
-        }catch (Exception e){
-            e.printStackTrace();
-        }finally{
-            closeConnection();
-        }
-        return result;
-    }
+//    public List<String> getAllStatus() {
+//        List<String> result = new ArrayList<>();
+//        String st;
+//        try {
+//            String sql = "Select distinct status From Working";
+//            conn= MyConnection.getMyConnection();
+//            preStm=conn.prepareStatement(sql);
+//            rs=preStm.executeQuery();
+//
+//            while (rs.next()) {
+//                st = rs.getString("status");
+//                result.add(st);
+//            }
+//        }catch (Exception e){
+//            e.printStackTrace();
+//        }finally{
+//            closeConnection();
+//        }
+//        return result;
+//    }
 
     public List<WorkingDTO> searchStatus(String st, String username) {
         List<WorkingDTO> result = new ArrayList<>();
@@ -156,7 +156,7 @@ public class WorkingDAO {
         return result;
     }
 
-    public List<WorkingDTO> searchTime(String tFrom, String tTo, String username) {
+    public List<WorkingDTO> searchTime(Timestamp tFrom, Timestamp tTo, String username) {
         List<WorkingDTO> result = new ArrayList<>();
         WorkingDTO dto=null;
         try {
@@ -165,8 +165,8 @@ public class WorkingDAO {
                     ", confirmFinish From Working where timeFrom >= ? and timeTo <= ? and userHandle = ?";
             conn= MyConnection.getMyConnection();
             preStm=conn.prepareStatement(sql);
-            preStm.setString(1, tFrom);
-            preStm.setString(2, tTo);
+            preStm.setTimestamp(1, tFrom);
+            preStm.setTimestamp(2, tTo);
             preStm.setString(3, username);
             rs=preStm.executeQuery();
 
@@ -192,7 +192,7 @@ public class WorkingDAO {
         boolean check = false;
         try {
             String sql = "Insert into Working(workId, workName, workDes, workProcess, status" +
-                    ", userCreate, userHandle, timeFrom, timeTo, timeCreate) Values(?,?,?,?,?,?,?,?,?,?)";
+                    ", userCreate, userHandle, timeFrom, timeTo, timeCreate, confirmFinish) Values(?,?,?,?,?,?,?,?,?,?,?)";
             conn = MyConnection.getMyConnection();
             preStm = conn.prepareStatement(sql);
             preStm.setString(1, dto.getWorkId());
@@ -205,6 +205,7 @@ public class WorkingDAO {
             preStm.setTimestamp(8, dto.getTimeFrom());
             preStm.setTimestamp(9, dto.getTimeTo());
             preStm.setTimestamp(10, dto.getTimeCreate());
+            preStm.setBoolean(11, false);
             check = preStm.executeUpdate() > 0;
         }catch (Exception e){
             e.printStackTrace();
@@ -223,6 +224,49 @@ public class WorkingDAO {
             preStm.setTimestamp(1, timeUpdate);
             preStm.setString(2, userUpdate);
             preStm.setString(3, workId);
+            check = preStm.executeUpdate() > 0;
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            closeConnection();
+        }
+        return check;
+    }
+
+    public WorkingDTO getWorkingToUpdate(String id) {
+
+        WorkingDTO dto = null;
+        try {
+            String sql = "Select workId, workName, workDes, workProcess, timeFrom, timeTo From Working Where workId = ?";
+            conn = MyConnection.getMyConnection();
+            preStm = conn.prepareStatement(sql);
+            preStm.setString(1, id);
+            rs = preStm.executeQuery();
+
+            while (rs.next()) {
+                dto = new WorkingDTO(rs.getString("workId"), rs.getString("workName"), rs.getString("workDes")
+                        , rs.getString("workProcess"), rs.getTimestamp("timeFrom"), rs.getTimestamp("timeTo"));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            closeConnection();
+        }
+        return dto;
+    }
+
+    public boolean updateWorking(WorkingDTO dto){
+        boolean check = false;
+        try {
+            String sql = "Update Working set workName = ?, workDes = ?, workProcess = ?, timeFrom = ?, timeTo = ? Where workId = ?";
+            conn = MyConnection.getMyConnection();
+            preStm = conn.prepareStatement(sql);
+            preStm.setString(1, dto.getWorkName());
+            preStm.setString(2, dto.getWorkDes());
+            preStm.setString(3, dto.getWorkProcess());
+            preStm.setTimestamp(4, dto.getTimeFrom());
+            preStm.setTimestamp(5, dto.getTimeTo());
+            preStm.setString(6, dto.getWorkId());
             check = preStm.executeUpdate() > 0;
         }catch (Exception e){
             e.printStackTrace();

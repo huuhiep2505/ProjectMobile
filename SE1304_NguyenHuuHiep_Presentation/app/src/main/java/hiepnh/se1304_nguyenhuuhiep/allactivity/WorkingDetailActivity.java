@@ -68,4 +68,12 @@ public class WorkingDetailActivity extends AppCompatActivity {
         txtTimeMark.setText(dto.getViewTimeMark());
         txtMark.setText(dto.getMark() + "");
     }
+
+    public void clickToUpdateInfo(View view) {
+        Intent intent = new Intent(this, UpdateWorkingActivity.class);
+        intent.putExtra("workId", dto.getWorkId());
+        intent.putExtra("Username", username);
+        startActivity(intent);
+        finish();
+    }
 }

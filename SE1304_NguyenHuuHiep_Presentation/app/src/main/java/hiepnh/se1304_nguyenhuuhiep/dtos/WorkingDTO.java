@@ -57,6 +57,15 @@ public class WorkingDTO implements Serializable {
         this.timeCreate = timeCreate;
     }
 
+    public WorkingDTO(String workId, String workName, String workDes, String workProcess, Timestamp timeFrom, Timestamp timeTo) {
+        this.workId = workId;
+        this.workName = workName;
+        this.workDes = workDes;
+        this.workProcess = workProcess;
+        this.timeFrom = timeFrom;
+        this.timeTo = timeTo;
+    }
+
     public String getWorkId() {
         return workId;
     }

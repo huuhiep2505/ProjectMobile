@@ -16,12 +16,14 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import hiepnh.se1304_nguyenhuuhiep.R;
 import hiepnh.se1304_nguyenhuuhiep.alladapter.WorkAdapter;
 import hiepnh.se1304_nguyenhuuhiep.daos.WorkingDAO;
 import hiepnh.se1304_nguyenhuuhiep.dtos.WorkingDTO;
+import hiepnh.se1304_nguyenhuuhiep.utils.CheckData;
 
 public class UserSearchActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener{
 
@@ -38,8 +40,15 @@ public class UserSearchActivity extends AppCompatActivity implements DatePickerD
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_search);
         spStatus = findViewById(R.id.spStatus);
+        listSearch = findViewById(R.id.listWorkSearch);
+        edtFrom = findViewById(R.id.edtFrom);
+        edtTo = findViewById(R.id.edtTo);
         dao = new WorkingDAO();
-        List<String> list = dao.getAllStatus();
+        List<String> list = new ArrayList<>();
+        list.add("Start");
+        list.add("Process");
+        list.add("Finish");
+        list.add("Done");
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, list);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spStatus.setAdapter(adapter);
@@ -61,11 +70,11 @@ public class UserSearchActivity extends AppCompatActivity implements DatePickerD
         String username = intent.getStringExtra("Username");
         List<WorkingDTO> listResult = dao.searchStatus(stringSelected, username);
         if (listResult.size() > 0){
-            listSearch = findViewById(R.id.listWorkSearch);
             adapter = new WorkAdapter();
             adapter.setWorkingDTOList(listResult);
             listSearch.setAdapter(adapter);
         }else {
+            listSearch.setAdapter(null);
             Toast.makeText(this, "Not found", Toast.LENGTH_LONG).show();
         }
     }
@@ -77,30 +86,28 @@ public class UserSearchActivity extends AppCompatActivity implements DatePickerD
         int month = i1 + 1;
         String result = i2 + "/" + month + "/" + i;
         if (toFlag){
-            edtTo = findViewById(R.id.edtTo);
             edtTo.setText(result);
-            timeTo = result;
         } else {
-            edtFrom = findViewById(R.id.edtFrom);
             edtFrom.setText(result);
-            timeFrom = result;
         }
     }
 
     public void searchTime(View view) {
-        if (timeFrom != null && timeTo != null){
+        if (edtFrom.getText().toString() != null && edtTo.getText().toString() != null){
             Intent intent = this.getIntent();
             String username = intent.getStringExtra("Username");
-            List<WorkingDTO> listResult = dao.searchTime(timeFrom, timeTo, username);
+            List<WorkingDTO> listResult = dao.searchTime(CheckData.getTimestamp(edtFrom.getText().toString()),
+                    CheckData.getTimestamp(edtTo.getText().toString()), username);
             if (listResult.size() > 0){
-                listSearch = findViewById(R.id.listWorkSearch);
                 adapter = new WorkAdapter();
                 adapter.setWorkingDTOList(listResult);
                 listSearch.setAdapter(adapter);
             }else {
+                listSearch.setAdapter(null);
                 Toast.makeText(this, "Not found", Toast.LENGTH_LONG).show();
             }
         } else {
+            listSearch.setAdapter(null);
             Toast.makeText(this, "Time is empty", Toast.LENGTH_LONG).show();
         }
     }
