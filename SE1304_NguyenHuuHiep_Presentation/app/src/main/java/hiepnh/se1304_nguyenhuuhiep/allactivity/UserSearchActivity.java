@@ -13,7 +13,6 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -33,7 +32,6 @@ public class UserSearchActivity extends AppCompatActivity implements DatePickerD
     private ListView listSearch;
     private WorkAdapter adapter;
     private EditText edtFrom, edtTo;
-    private String timeFrom, timeTo;
     private boolean toFlag;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +45,7 @@ public class UserSearchActivity extends AppCompatActivity implements DatePickerD
         List<String> list = new ArrayList<>();
         list.add("Start");
         list.add("Process");
+        list.add("Pending");
         list.add("Finish");
         list.add("Done");
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, list);

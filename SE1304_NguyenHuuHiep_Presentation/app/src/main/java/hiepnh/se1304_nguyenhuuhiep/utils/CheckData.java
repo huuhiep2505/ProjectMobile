@@ -4,6 +4,7 @@ import java.sql.Date;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.List;
 
 public class CheckData {
     public static String viewTime(Timestamp time){
@@ -23,5 +24,15 @@ public class CheckData {
         Calendar cal = Calendar.getInstance();
         cal.set(y, m - 1, d);
         return new Timestamp(cal.getTimeInMillis());
+    }
+
+    public static boolean checkWorkID(String id, List<String> listID){
+        for (String workID:listID
+             ) {
+            if (id.equalsIgnoreCase(workID)){
+                return true;
+            }
+        }
+        return false;
     }
 }

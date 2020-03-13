@@ -41,7 +41,7 @@ public class WorkingDAO {
         String id;
         WorkingDTO dto=null;
         try {
-            String sql = "Select workId, workName From Working where userHandle = ?";
+            String sql = "Select workId, workName From Working where userHandle = ? and status = 'Start' or status = 'Process'";
             conn= MyConnection.getMyConnection();
             preStm=conn.prepareStatement(sql);
             preStm.setString(1, userHandle);
@@ -274,5 +274,25 @@ public class WorkingDAO {
             closeConnection();
         }
         return check;
+    }
+
+    //CheckID
+    public List<String> getWorkID(){
+        List<String> listID = new ArrayList<>();
+        try {
+            String sql = "Select workId from Working";
+            conn = MyConnection.getMyConnection();
+            preStm = conn.prepareStatement(sql);
+            rs = preStm.executeQuery();
+            while (rs.next()){
+                String id = rs.getString("workId");
+                listID.add(id);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            closeConnection();
+        }
+        return listID;
     }
 }

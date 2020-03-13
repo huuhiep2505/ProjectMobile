@@ -47,7 +47,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:hint="dd/MM/yyyy"
-            android:inputType="date"
+            android:inputType="none"
+            android:editable="false"
             android:onClick="getFrom"/>
         <TextView
             android:layout_width="wrap_content"
@@ -58,7 +59,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:hint="dd/MM/yyyy"
-            android:inputType="date"
+            android:inputType="none"
+            android:editable="false"
             android:onClick="getTo"/>
     </LinearLayout>
     <ListView

@@ -2,12 +2,14 @@ package hiepnh.se1304_nguyenhuuhiep.allactivity;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -22,18 +24,17 @@ public class UserActivity extends AppCompatActivity {
     private WorkAdapter adapter;
     private WorkingDAO dao;
     private String username;
+    private SwipeRefreshLayout layout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user);
         listWorking = findViewById(R.id.listWorking);
+        layout = findViewById(R.id.pullToRefresh);
         dao = new WorkingDAO();
         Intent intent = this.getIntent();
         username = intent.getStringExtra("Username");
-        List<WorkingDTO> result = dao.getListWorking(username);
-        adapter = new WorkAdapter();
-        adapter.setWorkingDTOList(result);
-        listWorking.setAdapter(adapter);
+        showData();
         listWorking.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -45,6 +46,25 @@ public class UserActivity extends AppCompatActivity {
                 startActivity(intentShow);
             }
         });
+        layout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                showData();
+                layout.setRefreshing(false);
+            }
+        });
+    }
+
+    public void showData(){
+        List<WorkingDTO> result = dao.getListWorking(username);
+        if (result.size() > 0){
+            adapter = new WorkAdapter();
+            adapter.setWorkingDTOList(result);
+            listWorking.setAdapter(adapter);
+        }else {
+            Toast.makeText(this, "List Working empty!", Toast.LENGTH_LONG).show();
+        }
+
     }
 
     public void clickToLogout(View view) {
@@ -70,10 +90,7 @@ public class UserActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 123){
             if (resultCode == RESULT_OK){
-                List<WorkingDTO> result = dao.getListWorking(username);
-                adapter = new WorkAdapter();
-                adapter.setWorkingDTOList(result);
-                listWorking.setAdapter(adapter);
+                showData();
             }
         }
     }

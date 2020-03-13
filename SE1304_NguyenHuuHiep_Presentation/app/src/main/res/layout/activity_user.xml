@@ -9,7 +9,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical"
         android:layout_weight="1">
 
@@ -20,15 +20,21 @@
             android:textStyle="bold"
             android:textSize="40dp"
             android:gravity="center"/>
-
-        <ListView
-            android:id="@+id/listWorking"
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/pullToRefresh"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:listSelector="@drawable/list_selector"></ListView>
+            android:layout_height="match_parent">
+            <ListView
+                android:id="@+id/listWorking"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:listSelector="@drawable/list_selector"></ListView>
+
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

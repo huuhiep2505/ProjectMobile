@@ -10,7 +10,6 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.Calendar;
 import java.util.List;
@@ -23,7 +22,7 @@ import hiepnh.se1304_nguyenhuuhiep.utils.CheckData;
 public class CreateWorkActivity extends AppCompatActivity {
 
     private EditText edtTimeFrom, edtTimeTo, edtWorkId, edtWorkName, edtWorkDes, edtWorkProcess;
-    private String username, timeFrom, timeTo;
+    private String username;
     private boolean flag = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,11 +62,9 @@ public class CreateWorkActivity extends AppCompatActivity {
             public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
                 int month = i1 + 1;
                 if (flag){
-                    timeFrom = i2 + "/" + month + "/" + i;
-                    edtTimeFrom.setText(timeFrom);
+                    edtTimeFrom.setText(i2 + "/" + month + "/" + i);
                 } else {
-                    timeTo = i2 + "/" + month + "/" + i;
-                    edtTimeTo.setText(timeTo);
+                    edtTimeTo.setText(i2 + "/" + month + "/" + i);
                 }
             }
         }, year, month, day);
@@ -75,23 +72,37 @@ public class CreateWorkActivity extends AppCompatActivity {
     }
 
     public void clickToInsert(View view) {
-        String id = edtWorkId.getText().toString();
-        String name = edtWorkName.getText().toString();
-        String wDes = edtWorkDes.getText().toString();
-        String wPro = edtWorkProcess.getText().toString();
-        WorkingDTO dto = new WorkingDTO(id, name, wDes, wPro, "Start", username, username
-                , CheckData.getTimestamp(edtTimeFrom.getText().toString())
-                , CheckData.getTimestamp(edtTimeTo.getText().toString()), new Timestamp(System.currentTimeMillis()));
         WorkingDAO dao = new WorkingDAO();
-        boolean check = dao.createNewWork(dto);
-        if (check){
-            Toast.makeText(this, "Create Working success", Toast.LENGTH_LONG).show();
-            Intent intent = new Intent(this, UserActivity.class);
-            setResult(RESULT_OK, intent);
-            finish();
-        }else{
-            Toast.makeText(this, "Create Working fail", Toast.LENGTH_LONG).show();
-            finish();
+        List<String> listID = dao.getWorkID();
+        String id = edtWorkId.getText().toString().trim();
+        String name = edtWorkName.getText().toString().trim();
+        String wDes = edtWorkDes.getText().toString().trim();
+        String wPro = edtWorkProcess.getText().toString().trim();
+        String timeFrom = edtTimeFrom.getText().toString().trim();
+        String timeTo = edtTimeTo.getText().toString().trim();
+
+        if (!id.equals("") && !name.equals("") && !wDes.equals("") && !wPro.equals("") && !timeFrom.equals("") && !timeTo.equals("")){
+            boolean checkID = CheckData.checkWorkID(id, listID);
+            if (!checkID){
+                WorkingDTO dto = new WorkingDTO(id, name, wDes, wPro, "Start", username, username
+                        , CheckData.getTimestamp(timeFrom)
+                        , CheckData.getTimestamp(timeTo), new Timestamp(System.currentTimeMillis()));
+                boolean check = dao.createNewWork(dto);
+                if (check){
+                    Toast.makeText(this, "Create Working success", Toast.LENGTH_LONG).show();
+                    Intent intent = new Intent(this, UserActivity.class);
+                    setResult(RESULT_OK, intent);
+                    finish();
+                }else{
+                    Toast.makeText(this, "Create Working fail", Toast.LENGTH_LONG).show();
+                    finish();
+                }
+            }else {
+                Toast.makeText(this, "Duplicate ID", Toast.LENGTH_LONG).show();
+            }
+        }else {
+            Toast.makeText(this, "All fields must not empty", Toast.LENGTH_LONG).show();
         }
+
     }
 }

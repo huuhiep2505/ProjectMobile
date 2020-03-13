@@ -74,8 +74,9 @@
                 android:id="@+id/edtTimeFrom"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Choose Time From"
-                android:inputType="date"/>
+                android:hint="dd/MM/yyyy"
+                android:inputType="none"
+                android:editable="false"/>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -85,8 +86,9 @@
                 android:id="@+id/edtTimeTo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Choose Time To"
-                android:inputType="date"/>
+                android:hint="dd/MM/yyyy"
+                android:inputType="none"
+                android:editable="false"/>
 
             <Button
                 android:layout_width="wrap_content"
