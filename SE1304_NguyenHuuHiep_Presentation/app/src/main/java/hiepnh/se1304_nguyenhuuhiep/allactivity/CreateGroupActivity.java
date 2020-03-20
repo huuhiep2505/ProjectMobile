@@ -18,6 +18,7 @@ import hiepnh.se1304_nguyenhuuhiep.R;
 import hiepnh.se1304_nguyenhuuhiep.daos.GroupDAO;
 import hiepnh.se1304_nguyenhuuhiep.daos.UserDAO;
 import hiepnh.se1304_nguyenhuuhiep.dtos.UserDTO;
+import hiepnh.se1304_nguyenhuuhiep.utils.CheckData;
 
 public class CreateGroupActivity extends AppCompatActivity {
     private Spinner spUsername;
@@ -53,18 +54,29 @@ public class CreateGroupActivity extends AppCompatActivity {
 
     public void clickToCreateNewGroup(View view) {
         GroupDAO groupDAO = new GroupDAO();
+        List<String> listGroup = groupDAO.getGroup();
         String groupId = edtGroupId.getText().toString();
         String groupName = edtGroupName.getText().toString();
-        boolean check = groupDAO.createGroup(groupId,groupName,stringSelected);
-        if(check){
-            Toast.makeText(this,"Create success", Toast.LENGTH_LONG).show();
+        if (!groupId.equals("") && !groupName.equals("")) {
+            boolean checkGroupId = CheckData.checkGroupId(groupId,listGroup);
+            if(!checkGroupId){
+                boolean check = groupDAO.createGroup(groupId, groupName, stringSelected);
+                if (check) {
+                    Toast.makeText(this, "Create success", Toast.LENGTH_LONG).show();
 
-            Intent intent = new Intent(this , ChooseUserActivity.class);
-            intent.putExtra("groupId", groupId);
-            startActivity(intent);
-        }else {
-            Toast.makeText(this,"Create failed", Toast.LENGTH_LONG).show();
-            finish();
+                    Intent intent = new Intent(this, ChooseUserActivity.class);
+                    intent.putExtra("groupId", groupId);
+                    startActivity(intent);
+                } else {
+                    Toast.makeText(this, "Create failed", Toast.LENGTH_LONG).show();
+                    finish();
+                }
+
+            }else{
+                Toast.makeText(this, "Group ID is existed", Toast.LENGTH_LONG).show();
+            }
+        } else {
+            Toast.makeText(this, "All fields must not empty", Toast.LENGTH_LONG).show();
         }
     }
 }

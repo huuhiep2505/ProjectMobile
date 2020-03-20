@@ -35,4 +35,22 @@ public class CheckData {
         }
         return false;
     }
+    public static boolean checkUsername(String username, List<String> listUsername){
+        for (String name:listUsername
+        ) {
+            if (username.equalsIgnoreCase(name)){
+                return true;
+            }
+        }
+        return false;
+    }
+    public static boolean checkGroupId(String groupId, List<String> listGroupId){
+        for (String group:listGroupId
+        ) {
+            if (group.equalsIgnoreCase(group)){
+                return true;
+            }
+        }
+        return false;
+    }
 }

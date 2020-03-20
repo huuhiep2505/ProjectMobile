@@ -22,6 +22,7 @@ import hiepnh.se1304_nguyenhuuhiep.R;
 import hiepnh.se1304_nguyenhuuhiep.daos.GroupDAO;
 import hiepnh.se1304_nguyenhuuhiep.daos.UserDAO;
 import hiepnh.se1304_nguyenhuuhiep.dtos.GroupDTO;
+import hiepnh.se1304_nguyenhuuhiep.utils.CheckData;
 
 public class CreateNewAccountActivity extends AppCompatActivity {
     private EditText edtUsername, edtPassword,edtFullname,edtPhone,edtAddress,edtEmail,edtBirthday;
@@ -102,6 +103,7 @@ public class CreateNewAccountActivity extends AppCompatActivity {
 
     public void clickToCreate(View view) {
         UserDAO userDAO = new UserDAO();
+        List<String> listUsername = userDAO.getUsername();
         String username = edtUsername.getText().toString();
         String password = edtPassword.getText().toString();
         String fullname = edtFullname.getText().toString();
@@ -109,18 +111,25 @@ public class CreateNewAccountActivity extends AppCompatActivity {
         String address = edtAddress.getText().toString();
         String email = edtEmail.getText().toString();
         String birthday = edtBirthday.getText().toString();
-      //  String role = edtRole.getTransitionName().toString();
-      //  String group = edtGroupId.getText().toString();
-        boolean check = userDAO.createUser(username,password,fullname,phone,address,email,birthday,stringSelected,stringSelectedGroup);
-        if(check){
-            Toast.makeText(this,"Create success", Toast.LENGTH_LONG).show();
+        if(!username.equals("") && !password.equals("") && !fullname.equals("") && !phone.equals("") && !address.equals("") && !email.equals("")){
+            boolean checkUsername = CheckData.checkUsername(username,listUsername);
+            if(!checkUsername){
+                boolean check = userDAO.createUser(username,password,fullname,phone,address,email,birthday,stringSelected,stringSelectedGroup);
+                if(check){
+                    Toast.makeText(this,"Create success", Toast.LENGTH_LONG).show();
 
-            Intent intent = new Intent(this , AccountManagementActivity.class);
-            startActivity(intent);
-            finish();
+                    Intent intent = new Intent(this , AccountManagementActivity.class);
+                    startActivity(intent);
+                    finish();
+                }else {
+                    Toast.makeText(this,"Create failed", Toast.LENGTH_LONG).show();
+                    finish();
+                }
+            }else {
+                Toast.makeText(this, "Username is existed", Toast.LENGTH_LONG).show();
+            }
         }else {
-            Toast.makeText(this,"Create failed", Toast.LENGTH_LONG).show();
-            finish();
+            Toast.makeText(this, "All fields must not empty", Toast.LENGTH_LONG).show();
         }
     }
 }

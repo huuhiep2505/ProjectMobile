@@ -234,4 +234,22 @@ public class UserDAO implements Serializable {
         }
         return check;
     }
+    public List<String> getUsername(){
+        List<String> listUsername = new ArrayList<>();
+        try {
+            String sql = "Select username from Users";
+            conn = MyConnection.getMyConnection();
+            preStm = conn.prepareStatement(sql);
+            rs = preStm.executeQuery();
+            while (rs.next()){
+                String username = rs.getString("username");
+                listUsername.add(username);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            closeConnection();
+        }
+        return listUsername;
+    }
 }
