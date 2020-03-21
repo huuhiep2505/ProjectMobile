@@ -111,7 +111,9 @@ public class CreateNewAccountActivity extends AppCompatActivity {
         String address = edtAddress.getText().toString();
         String email = edtEmail.getText().toString();
         String birthday = edtBirthday.getText().toString();
-        if(!username.equals("") && !password.equals("") && !fullname.equals("") && !phone.equals("") && !address.equals("") && !email.equals("")){
+        if(!username.equals("") && !password.equals("") && !fullname.equals("") && !phone.equals("") && phone.matches("[0-9]{10}")
+                && email.matches("[a-zA-z0-9]{6,15}@[a-z]{1,6}[.][a-z]{1,3}||[a-zA-z0-9]{6,15}@[a-z]{1,6}[.][a-z]{1,3}[.][a-z]{1,3}")
+                && !address.equals("") && !email.equals("") && !birthday.equals("")){
             boolean checkUsername = CheckData.checkUsername(username,listUsername);
             if(!checkUsername){
                 boolean check = userDAO.createUser(username,password,fullname,phone,address,email,birthday,stringSelected,stringSelectedGroup);
@@ -129,7 +131,7 @@ public class CreateNewAccountActivity extends AppCompatActivity {
                 Toast.makeText(this, "Username is existed", Toast.LENGTH_LONG).show();
             }
         }else {
-            Toast.makeText(this, "All fields must not empty", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "input wrong", Toast.LENGTH_LONG).show();
         }
     }
 }

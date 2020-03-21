@@ -47,7 +47,7 @@ public class CheckData {
     public static boolean checkGroupId(String groupId, List<String> listGroupId){
         for (String group:listGroupId
         ) {
-            if (group.equalsIgnoreCase(group)){
+            if (groupId.equalsIgnoreCase(group)){
                 return true;
             }
         }
