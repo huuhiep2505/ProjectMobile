@@ -101,7 +101,7 @@ public class UpdateInformationAccountActivity extends AppCompatActivity {
             @Override
             public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
                 calendar.set(i,i1,i2);
-                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
+                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy/MM/dd");
                 edtBirthday.setText(simpleDateFormat.format(calendar.getTime()));
             }
         },year , month, day);

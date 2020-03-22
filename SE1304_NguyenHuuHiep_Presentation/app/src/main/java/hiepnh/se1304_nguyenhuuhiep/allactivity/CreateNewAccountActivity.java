@@ -94,7 +94,7 @@ public class CreateNewAccountActivity extends AppCompatActivity {
             @Override
             public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
                 calendar.set(i,i1,i2);
-                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
+                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy/MM/dd");
                 edtBirthday.setText(simpleDateFormat.format(calendar.getTime()));
             }
         },year , month, day);
@@ -104,11 +104,11 @@ public class CreateNewAccountActivity extends AppCompatActivity {
     public void clickToCreate(View view) {
         UserDAO userDAO = new UserDAO();
         List<String> listUsername = userDAO.getUsername();
-        String username = edtUsername.getText().toString();
-        String password = edtPassword.getText().toString();
-        String fullname = edtFullname.getText().toString();
+        String username = edtUsername.getText().toString().trim();
+        String password = edtPassword.getText().toString().trim();
+        String fullname = edtFullname.getText().toString().trim();
         String phone = edtPhone.getText().toString();
-        String address = edtAddress.getText().toString();
+        String address = edtAddress.getText().toString().trim();
         String email = edtEmail.getText().toString();
         String birthday = edtBirthday.getText().toString();
         if(!username.equals("") && !password.equals("") && !fullname.equals("") && !phone.equals("") && phone.matches("[0-9]{10}")
