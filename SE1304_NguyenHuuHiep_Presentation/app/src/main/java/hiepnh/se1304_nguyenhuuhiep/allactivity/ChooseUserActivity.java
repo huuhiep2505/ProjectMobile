@@ -47,7 +47,7 @@ public class ChooseUserActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 listChoice = new ArrayList<>();
                 for (int j = 0; j < adapterView.getCount() ;  j++) {
-                    boolean check = listUser.getCheckedItemPositions().get(i);
+                    boolean check = listUser.getCheckedItemPositions().get(j);
                     if (check) {
                         String name = adapterView.getAdapter().getItem(j).toString();
                         listChoice.add(name);

@@ -45,7 +45,6 @@ public class UserSearchActivity extends AppCompatActivity implements DatePickerD
         List<String> list = new ArrayList<>();
         list.add("Start");
         list.add("Process");
-        list.add("Pending");
         list.add("Finish");
         list.add("Done");
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, list);

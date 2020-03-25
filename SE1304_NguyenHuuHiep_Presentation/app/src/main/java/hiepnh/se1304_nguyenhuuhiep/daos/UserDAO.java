@@ -252,4 +252,27 @@ public class UserDAO implements Serializable {
         }
         return listUsername;
     }
+    public List<UserDTO> getListUser(String groupId) {
+        List<UserDTO> listUsername = new ArrayList<>();
+        UserDTO dto =null;
+        try {
+            String sql = "Select username, fullname, role from Users where groupId =? and role LIKE 'user'";
+            conn = MyConnection.getMyConnection();
+            preStm = conn.prepareStatement(sql);
+            preStm.setString(1, groupId);
+            rs = preStm.executeQuery();
+            while (rs.next()){
+                String username = rs.getString("username");
+                String fullname = rs.getString("fullname");
+                String role = rs.getString("role");
+                dto = new UserDTO(username,fullname,role);
+                listUsername.add(dto);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            closeConnection();
+        }
+        return listUsername;
+    }
 }

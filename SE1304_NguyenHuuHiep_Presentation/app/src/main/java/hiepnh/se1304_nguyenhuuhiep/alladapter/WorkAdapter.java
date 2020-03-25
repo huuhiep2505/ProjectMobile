@@ -37,8 +37,8 @@ public class WorkAdapter extends BaseAdapter {
         }
         WorkingDTO dto = workingDTOList.get(i);
         TextView txtName = view.findViewById(R.id.txtName);
-//        TextView txtMark = view.findViewById(R.id.txtMark);
-//        TextView txtName = view.findViewById(R.id.txtName);
+        TextView txtStatus = view.findViewById(R.id.txtStatus);
+        txtStatus.setText(dto.getWorkDes());
         txtName.setText(dto.getWorkName());
         return view;
     }

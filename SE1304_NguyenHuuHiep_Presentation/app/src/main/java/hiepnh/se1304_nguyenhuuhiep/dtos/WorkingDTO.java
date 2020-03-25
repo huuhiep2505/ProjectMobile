@@ -21,6 +21,13 @@ public class WorkingDTO implements Serializable {
         this.workName = workName;
     }
 
+    public WorkingDTO(String workId, String workName, String status, String userHandle) {
+        this.workId = workId;
+        this.workName = workName;
+        this.status = status;
+        this.userHandle = userHandle;
+    }
+
     public WorkingDTO(String workId, String workName, String workDes) {
         this.workId = workId;
         this.workName = workName;

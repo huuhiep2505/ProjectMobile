@@ -41,9 +41,10 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
                 finish();
             }else if(role.equals("manager")) {
-//                Intent intent = new Intent(this, ManagerActivity.class);
-//                startActivity(intent);
-//                finish();
+                Intent intent = new Intent(this, ManagerActivity.class);
+                intent.putExtra("Username", username);
+                startActivity(intent);
+                finish();
             }else{
                 Toast.makeText(this,"Wrong Username or Password!", Toast.LENGTH_LONG).show();
             }

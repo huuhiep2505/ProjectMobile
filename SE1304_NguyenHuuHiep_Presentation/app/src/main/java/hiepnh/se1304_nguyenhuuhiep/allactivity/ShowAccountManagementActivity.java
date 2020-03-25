@@ -42,7 +42,9 @@ public class ShowAccountManagementActivity extends AppCompatActivity {
     public void clickToUpdateInformation(View view) {
         Intent intent = new Intent(this, UpdateInformationAccountActivity.class);
         intent.putExtra("username", dto.getUsername());
+        intent.putExtra("DTO",dto);
         startActivity(intent);
+        finish();
     }
 
     public void clickToDeleteAccount(View view) {

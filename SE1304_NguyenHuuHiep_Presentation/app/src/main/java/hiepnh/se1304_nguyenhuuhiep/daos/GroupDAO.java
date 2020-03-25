@@ -9,6 +9,7 @@ import java.util.List;
 
 import hiepnh.se1304_nguyenhuuhiep.db.MyConnection;
 import hiepnh.se1304_nguyenhuuhiep.dtos.GroupDTO;
+import hiepnh.se1304_nguyenhuuhiep.dtos.WorkingDTO;
 
 public class GroupDAO implements Serializable {
     private Connection conn = null;
@@ -75,4 +76,30 @@ public class GroupDAO implements Serializable {
         }
         return result;
     }
+    public List<GroupDTO> getListGroup(String userHandle) {
+        List<GroupDTO> result = new ArrayList<>();
+        String name;
+        String id;
+        GroupDTO dto=null;
+        try {
+            String sql = "Select groupId, groupName From Groups where username = ?";
+            conn= MyConnection.getMyConnection();
+            preStm=conn.prepareStatement(sql);
+            preStm.setString(1, userHandle);
+            rs=preStm.executeQuery();
+
+            while (rs.next()) {
+                name = rs.getString("groupName");
+                id = rs.getString("groupId");
+                dto = new GroupDTO(id, name);
+                result.add(dto);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally{
+            closeConnection();
+        }
+        return result;
+    }
+
 }

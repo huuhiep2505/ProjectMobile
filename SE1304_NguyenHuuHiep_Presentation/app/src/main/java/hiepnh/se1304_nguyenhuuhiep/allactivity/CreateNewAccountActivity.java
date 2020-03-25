@@ -50,7 +50,6 @@ public class CreateNewAccountActivity extends AppCompatActivity {
         edtRole = findViewById(R.id.edtRole);
         List<String> list = new ArrayList<>();
         list.add("user");
-        list.add("admin");
         list.add("manager");
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, list);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);

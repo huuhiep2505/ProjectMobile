@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@mipmap/pic2"
     android:scrollbars="vertical"
     tools:context=".allactivity.UpdateInformationAccountActivity">
 
@@ -12,78 +13,143 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
+        android:textColor="@color/duskYellow"
         android:text="Update Information"
         android:textSize="30dp"
         android:textStyle="bold" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:scrollbars="vertical"
+            android:layout_weight="1">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:layout_marginTop="@dimen/dp15"
+                android:textColor="@color/duskYellow"
+                android:layout_marginLeft="@dimen/dp20"
+                android:text="FullName: "
+                android:textSize="15dp"/>
+            <EditText
+                android:id="@+id/edtFullname"
+                android:textColor="@color/white"
+                android:inputType="text"
+                android:layout_marginLeft="@dimen/dp20"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textColor="@color/duskYellow"
+                android:layout_marginLeft="@dimen/dp20"
+                android:text="Phone: "
+                android:textSize="15dp"/>
+            <EditText
+                android:id="@+id/edtPhone"
+                android:textColor="@color/white"
+                android:inputType="number"
+                android:layout_marginLeft="@dimen/dp20"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textColor="@color/duskYellow"
+                android:layout_marginLeft="@dimen/dp20"
+                android:text="Address: "
+                android:textSize="15dp"/>
+            <EditText
+                android:id="@+id/edtAddress"
+                android:textColor="@color/white"
+                android:inputType="text"
+                android:layout_marginLeft="@dimen/dp20"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textColor="@color/duskYellow"
+                android:layout_marginLeft="@dimen/dp20"
+                android:text="Email: "
+                android:textSize="15dp"/>
+            <EditText
+                android:id="@+id/edtEmail"
+                android:textColor="@color/white"
+                android:inputType="text"
+                android:layout_marginLeft="@dimen/dp20"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textColor="@color/duskYellow"
+                android:layout_marginLeft="@dimen/dp20"
+                android:text="Birthday: "
+                android:textSize="15dp"/>
+            <EditText
+                android:id="@+id/edtBirthday"
+                android:textColor="@color/white"
+                android:inputType="none"
+                android:editable="false"
+                android:layout_marginLeft="@dimen/dp20"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Fullname: "/>
-    <EditText
-        android:id="@+id/edtFullname"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="text" />
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Phone: "/>
-    <EditText
-        android:id="@+id/edtPhone"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="text" />
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Address: "/>
-    <EditText
-        android:id="@+id/edtAddress"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="text" />
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Email: "/>
-    <EditText
-        android:id="@+id/edtEmail"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="text" />
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Birthday: "/>
-    <EditText
-        android:id="@+id/edtBirthday"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="date" />
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Role: "/>
-    <EditText
+        android:textStyle="bold"
+        android:textColor="@color/duskYellow"
+        android:layout_marginLeft="@dimen/dp20"
+        android:text="Role: "
+        android:textSize="15dp"/>
+    <Spinner
         android:id="@+id/edtRole"
-        android:layout_width="match_parent"
+        android:layout_width="280dp"
         android:layout_height="wrap_content"
-        android:inputType="text" />
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/dp10"
+        android:background="@drawable/test"
+        android:textAlignment="center"
+        android:gravity="center"/>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Group: "/>
-    <EditText
+        android:textStyle="bold"
+        android:textColor="@color/duskYellow"
+        android:layout_marginLeft="@dimen/dp20"
+        android:text="Group: "
+        android:textSize="15dp"/>
+    <Spinner
         android:id="@+id/edtGroupId"
-        android:layout_width="match_parent"
+        android:layout_width="280dp"
         android:layout_height="wrap_content"
-        android:inputType="text" />
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/dp10"
+        android:background="@drawable/test"
+        android:textAlignment="center"
+        android:gravity="center" />
     <Button
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/dp40"
+        android:layout_gravity="center|bottom"
+        android:background="@drawable/radius_5_half"
+        android:layout_margin="@dimen/dp20"
+        android:textColor="@color/white"
+        android:textSize="@dimen/dp20"
         android:text="Update"
         android:onClick="clickToUpdateInformation"/>
-
+        </LinearLayout>
+    </ScrollView>
 
 </LinearLayout>

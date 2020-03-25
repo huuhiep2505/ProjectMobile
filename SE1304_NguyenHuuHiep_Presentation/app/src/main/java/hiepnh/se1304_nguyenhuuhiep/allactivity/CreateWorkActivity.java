@@ -84,7 +84,7 @@ public class CreateWorkActivity extends AppCompatActivity {
         if (!id.equals("") && !name.equals("") && !wDes.equals("") && !wPro.equals("") && !timeFrom.equals("") && !timeTo.equals("")){
             boolean checkID = CheckData.checkWorkID(id, listID);
             if (!checkID){
-                WorkingDTO dto = new WorkingDTO(id, name, wDes, wPro, "Start", username, username
+                WorkingDTO dto = new WorkingDTO(id, name, wDes, wPro, "Request", username, username
                         , CheckData.getTimestamp(timeFrom)
                         , CheckData.getTimestamp(timeTo), new Timestamp(System.currentTimeMillis()));
                 boolean check = dao.createNewWork(dto);

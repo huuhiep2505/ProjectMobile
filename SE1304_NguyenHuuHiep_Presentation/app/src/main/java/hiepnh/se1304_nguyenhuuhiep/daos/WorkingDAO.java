@@ -39,9 +39,38 @@ public class WorkingDAO {
         List<WorkingDTO> result = new ArrayList<>();
         String name;
         String id;
-        WorkingDTO dto=null;
+        String status;
+        WorkingDTO dto = null;
         try {
-            String sql = "Select workId, workName From Working where userHandle = ? and status = 'Start' or status = 'Process'";
+            String sql = "Select workId, workName, status From Working where userHandle = ? and ( status = 'Start' or status = 'Process')";
+            conn= MyConnection.getMyConnection();
+            preStm=conn.prepareStatement(sql);
+
+            preStm.setString(1, userHandle);
+            rs=preStm.executeQuery();
+
+            while (rs.next()) {
+                name = rs.getString("workName");
+                id = rs.getString("workId");
+                status = rs.getString("status");
+                dto = new WorkingDTO(id, name,status);
+                result.add(dto);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally{
+            closeConnection();
+        }
+        return result;
+    }
+    public List<WorkingDTO> getListWorkingRequest(String userHandle) {
+        List<WorkingDTO> result = new ArrayList<>();
+        String name;
+        String id;
+        String status;
+        WorkingDTO dto = null;
+        try {
+            String sql = "Select workId, workName, status From Working where userHandle = ? and (status = 'Request' or status = 'Finish')";
             conn= MyConnection.getMyConnection();
             preStm=conn.prepareStatement(sql);
             preStm.setString(1, userHandle);
@@ -50,7 +79,36 @@ public class WorkingDAO {
             while (rs.next()) {
                 name = rs.getString("workName");
                 id = rs.getString("workId");
-                dto = new WorkingDTO(id, name);
+                status = rs.getString("status");
+                dto = new WorkingDTO(id, name,status);
+                result.add(dto);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally{
+            closeConnection();
+        }
+        return result;
+    }
+    public List<WorkingDTO> getListRequest() {
+        List<WorkingDTO> result = new ArrayList<>();
+        String workName;
+        String userHandle;
+        String status;
+        String workId;
+        WorkingDTO dto = null;
+        try {
+            String sql = "Select workId, userHandle, workName, status From Working where status = 'Request' or status = 'Finish'";
+            conn= MyConnection.getMyConnection();
+            preStm=conn.prepareStatement(sql);
+            rs=preStm.executeQuery();
+
+            while (rs.next()) {
+                workId = rs.getString("workId");
+                userHandle = rs.getString("userHandle");
+                workName = rs.getString("workName");
+                status = rs.getString("status");
+                dto = new WorkingDTO(workId,workName,status,userHandle);
                 result.add(dto);
             }
         }catch (Exception e){

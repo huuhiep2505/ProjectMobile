@@ -25,4 +25,10 @@ public class AdminActivity extends AppCompatActivity {
         Intent intent = new Intent(this, CreateGroupActivity.class);
         startActivity(intent);
     }
+
+    public void clickToLogout(View view) {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+        finish();
+    }
 }

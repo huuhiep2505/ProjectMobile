@@ -50,7 +50,7 @@ public class UserAdapter extends BaseAdapter {
         return view;
     }
 
-//    public void setUserDTOList(List<UserDTO> userDTOList) {
-//        this.userDTOList = userDTOList;
-//    }
+    public void setUserDTOList(List<UserDTO> userDTOList) {
+        this.userDTOList = userDTOList;
+    }
 }

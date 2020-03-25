@@ -12,13 +12,19 @@
         <TextView
             android:id="@+id/txtUsername"
             android:layout_width="wrap_content"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:layout_marginLeft="30dp"
             android:layout_height="wrap_content"
             android:text="Username: "/>
         <TextView
             android:id="@+id/txtRole"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColor="@color/white"
             android:gravity="right"
+            android:layout_marginRight="@dimen/dp30"
             android:text="Role :"/>
 
 
@@ -26,6 +32,9 @@
     <TextView
         android:id="@+id/txtFullname"
         android:layout_width="match_parent"
+        android:textColor="@color/white"
+        android:layout_marginLeft="30dp"
+        android:layout_marginBottom="@dimen/dp15"
         android:layout_height="match_parent"
         android:text="Fullname :"/>
 

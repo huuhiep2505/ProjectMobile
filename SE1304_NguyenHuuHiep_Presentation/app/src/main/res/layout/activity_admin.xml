@@ -5,28 +5,38 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:layout_marginTop="@dimen/dp150"
     tools:context=".allactivity.AdminActivity">
     <Button
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/dp40"
+        android:layout_gravity="center|bottom"
+        android:background="@drawable/radius_5_half"
+        android:layout_margin="@dimen/dp20"
+        android:textColor="@color/white"
+        android:textSize="@dimen/dp20"
         android:text="Account management"
-        android:textSize="20dp"
-        android:textStyle="bold"
         android:onClick="clickToAccountManagement"/>
     <Button
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/dp40"
+        android:layout_gravity="center|bottom"
+        android:background="@drawable/radius_5_half"
+        android:layout_margin="@dimen/dp20"
+        android:textColor="@color/white"
+        android:textSize="@dimen/dp20"
         android:text="Group management"
-        android:textSize="20dp"
-        android:textStyle="bold"
         android:onClick="clickToGroupManagement"/>
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Account management"
-        android:textSize="20dp"
-        android:textStyle="bold"
-        android:onClick="clickToHistoryManagement"/>
 
+    <Button
+        android:layout_width="@dimen/dp200"
+        android:layout_height="@dimen/dp40"
+        android:layout_gravity="center|bottom"
+        android:background="@color/red"
+        android:layout_margin="@dimen/dp20"
+        android:textColor="@color/white"
+        android:textSize="@dimen/dp20"
+        android:text="Logout"
+        android:onClick="clickToLogout"/>
 
 </LinearLayout>

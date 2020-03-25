@@ -10,6 +10,12 @@ public class UserDTO implements Serializable {
     public UserDTO() {
     }
 
+    public UserDTO(String username, String fullname, String role) {
+        this.username = username;
+        this.fullname = fullname;
+        this.role = role;
+    }
+
     public UserDTO(String username) {
         this.username = username;
     }

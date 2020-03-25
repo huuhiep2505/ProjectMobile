@@ -16,7 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textStyle="bold"
-            android:textSize="20dp"
+            android:textSize="30dp"
             android:text="List User"
             android:gravity="center"/>
         <ListView
@@ -33,8 +33,12 @@
         android:orientation="horizontal"
         android:gravity="center">
         <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="@dimen/dp250"
+            android:layout_height="@dimen/dp40"
+            android:layout_gravity="center|bottom"
+            android:background="@drawable/radius_5_half"
+            android:textColor="@color/white"
+            android:textSize="@dimen/dp20"
             android:text="ADD"
             android:onClick="clickToAdd"/>
     </LinearLayout>

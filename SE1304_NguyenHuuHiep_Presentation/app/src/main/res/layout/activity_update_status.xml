@@ -5,22 +5,26 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@mipmap/pic5"
     tools:context=".allactivity.UpdateStatusActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Status"
-        android:textSize="20dp"/>
+
     <Spinner
         android:id="@+id/spStatus"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"/>
-    <Button
-        android:layout_width="wrap_content"
+        android:layout_width="80dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:layout_marginTop="@dimen/dp10"
+        android:background="@drawable/test"
+        android:textAlignment="center"
+        android:gravity="center"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/dp40"
+        android:layout_gravity="center|bottom"
+        android:background="@drawable/radius_5_half"
+        android:layout_margin="@dimen/dp10"
+        android:textColor="@color/white"
         android:text="Update"
         android:onClick="updateStatus"/>
 </LinearLayout>

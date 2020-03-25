@@ -23,6 +23,7 @@ public class AccountManagementActivity extends AppCompatActivity {
     private UserAdapter adapter;
     private UserDAO dao;
     private EditText edtFullname;
+    String username;
     List<UserDTO> result;
     List<UserDTO> temp = new ArrayList<>();
 
@@ -34,6 +35,7 @@ public class AccountManagementActivity extends AppCompatActivity {
         edtFullname = findViewById(R.id.edtFullname);
         dao = new UserDAO();
         result = dao.getAccountManagement();
+
 //        adapter = new UserAdapter();
 //        adapter.setUserDTOList(result);
         adapter = new UserAdapter(result);
@@ -44,7 +46,7 @@ public class AccountManagementActivity extends AppCompatActivity {
                                                    UserDTO dto = (UserDTO) listAccount.getItemAtPosition(i);
                                                    Intent intent = new Intent(AccountManagementActivity.this, ShowAccountManagementActivity.class);
                                                    intent.putExtra("DTO", dto);
-                                                   startActivity(intent);
+                                                      startActivity(intent);
                                                }
                                            }
         );
@@ -53,7 +55,6 @@ public class AccountManagementActivity extends AppCompatActivity {
     public void clickToCreateNewAccount(View view) {
         Intent intent = new Intent(this, CreateNewAccountActivity.class);
         startActivity(intent);
-        finish();
     }
 
     public void clickToSearchName(View view) {
@@ -67,5 +68,12 @@ public class AccountManagementActivity extends AppCompatActivity {
         }
        adapter = new UserAdapter(temp);
         listAccount.setAdapter(adapter);
+    }
+
+    public void clickToRequestTask(View view) {
+        Intent intent = new Intent(this, AdminRequestTaskActivity.class);
+        intent.putExtra("Username",username);
+        startActivity(intent);
+
     }
 }

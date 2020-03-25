@@ -5,11 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@mipmap/pic2"
     tools:context=".allactivity.UpdateWorkingActivity">
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Update Working"
+        android:textColor="@color/duskYellow"
         android:textSize="40dp"
         android:textStyle="bold"
         android:gravity="center"/>
@@ -27,40 +29,61 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textColor="@color/duskYellow"
+                android:layout_marginLeft="@dimen/dp20"
                 android:text="Work ID: "
                 android:textSize="20dp"/>
             <EditText
                 android:id="@+id/edtWorkID"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:layout_marginLeft="@dimen/dp20"
                 android:editable="false"
                 android:inputType="none"/>
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textColor="@color/duskYellow"
+                android:layout_marginLeft="@dimen/dp20"
                 android:text="Work Name: "
                 android:textSize="20dp"/>
             <EditText
                 android:id="@+id/edtWorkName"
+                android:textColor="@color/white"
+                android:layout_marginLeft="@dimen/dp20"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textColor="@color/duskYellow"
+                android:layout_marginLeft="@dimen/dp20"
                 android:text="Work Description: "
                 android:textSize="20dp"/>
             <EditText
                 android:id="@+id/edtWorkDes"
+                android:textColor="@color/white"
+                android:layout_marginLeft="@dimen/dp20"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textMultiLine"/>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textColor="@color/duskYellow"
+                android:layout_marginLeft="@dimen/dp20"
                 android:text="Work Process: "
                 android:textSize="20dp"/>
             <EditText
                 android:id="@+id/edtWorkProcess"
+                android:textColor="@color/white"
+                android:layout_marginLeft="@dimen/dp20"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textMultiLine"/>
@@ -68,33 +91,48 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textColor="@color/duskYellow"
+                android:layout_marginLeft="@dimen/dp20"
+                android:textSize="20dp"
                 android:text="Time From: "
-                android:textSize="20dp"/>
+                />
             <EditText
                 android:id="@+id/edtTimeFrom"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:layout_marginLeft="@dimen/dp20"
                 android:hint="dd/MM/yyyy"
                 android:inputType="none"
                 android:editable="false"/>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textColor="@color/duskYellow"
+                android:layout_marginLeft="@dimen/dp20"
                 android:text="Time To: "
                 android:textSize="20dp"/>
             <EditText
                 android:id="@+id/edtTimeTo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:layout_marginLeft="@dimen/dp20"
                 android:hint="dd/MM/yyyy"
                 android:inputType="none"
                 android:editable="false"/>
 
             <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp40"
+                android:layout_gravity="center|bottom"
+                android:background="@drawable/radius_5_half"
+                android:layout_margin="@dimen/dp20"
+                android:textColor="@color/white"
+                android:textSize="@dimen/dp20"
                 android:text="Update Working"
-                android:layout_gravity="center"
                 android:onClick="clickToUpdate"/>\
         </LinearLayout>
     </ScrollView>

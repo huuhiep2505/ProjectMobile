@@ -5,11 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@mipmap/pic2"
     tools:context=".allactivity.CreateWorkActivity">
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="New Working"
+        android:text="Create Work"
+        android:textColor="@color/duskYellow"
         android:textSize="40dp"
         android:textStyle="bold"
         android:gravity="center"/>
@@ -23,76 +25,130 @@
             android:orientation="vertical"
             android:scrollbars="vertical"
             android:layout_weight="1">
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:hint="Work ID"
+                android:textColorHint="@color/white"
+                >
 
-            <TextView
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtWorkID"
+                    android:drawablePadding="@dimen/dp10"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:textColor="@color/white"
+                    android:inputType="text"
+                    android:focusable="true"
+                    />
+            </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Work ID: "
-                android:textSize="20dp"/>
-            <EditText
-                android:id="@+id/edtWorkID"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Work Name: "
-                android:textSize="20dp"/>
-            <EditText
-                android:id="@+id/edtWorkName"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Work Description: "
-                android:textSize="20dp"/>
-            <EditText
-                android:id="@+id/edtWorkDes"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textMultiLine"/>
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Work Process: "
-                android:textSize="20dp"/>
-            <EditText
-                android:id="@+id/edtWorkProcess"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textMultiLine"/>
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:hint="Work Name"
+                android:textColorHint="@color/white"
+                >
 
-            <TextView
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtWorkName"
+                    android:drawablePadding="@dimen/dp10"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:textColor="@color/white"
+                    android:inputType="text"
+                    android:focusable="true"
+                    />
+            </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Time From: "
-                android:textSize="20dp"/>
-            <EditText
-                android:id="@+id/edtTimeFrom"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="dd/MM/yyyy"
-                android:inputType="none"
-                android:editable="false"/>
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Time To: "
-                android:textSize="20dp"/>
-            <EditText
-                android:id="@+id/edtTimeTo"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="dd/MM/yyyy"
-                android:inputType="none"
-                android:editable="false"/>
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:hint="Work Description"
+                android:textColorHint="@color/white"
+                >
 
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtWorkDes"
+                    android:drawablePadding="@dimen/dp10"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:textColor="@color/white"
+                    android:inputType="text"
+                    android:focusable="true"
+                    />
+            </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:hint="Work Process"
+                android:textColorHint="@color/white"
+                >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtWorkProcess"
+                    android:drawablePadding="@dimen/dp10"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:textColor="@color/white"
+                    android:inputType="text"
+                    android:focusable="true"
+                    />
+            </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:hint="Time From : dd/MM/yyyy"
+                android:textColorHint="@color/white"
+                >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtTimeFrom"
+                    android:drawablePadding="@dimen/dp10"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:textColor="@color/white"
+                    android:inputType="none"
+                    android:focusable="false"
+                    />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:hint="Time To : dd/MM/yyyy"
+                android:textColorHint="@color/white"
+                >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtTimeTo"
+                    android:drawablePadding="@dimen/dp10"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:textColor="@color/white"
+                    android:inputType="none"
+                    android:focusable="false"
+                    />
+            </com.google.android.material.textfield.TextInputLayout>
             <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp40"
+                android:layout_gravity="center|bottom"
+                android:background="@drawable/radius_5_half"
+                android:layout_margin="@dimen/dp20"
+                android:textColor="@color/white"
+                android:textSize="@dimen/dp20"
                 android:text="Create Working"
-                android:layout_gravity="center"
                 android:onClick="clickToInsert"/>\
         </LinearLayout>
     </ScrollView>

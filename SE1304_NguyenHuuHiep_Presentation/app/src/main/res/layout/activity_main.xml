@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@mipmap/pic2"
     tools:context=".allactivity.MainActivity">
 
     <TextView
@@ -12,32 +13,69 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="Login"
+        android:textColor="@color/duskYellow"
         android:textSize="40dp"
         android:textStyle="bold" />
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Username: "/>
-    <EditText
-        android:id="@+id/edtUsername"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="text"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Password: "/>
-    <EditText
-        android:id="@+id/edtPassword"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="textPassword"
-        />
+        android:orientation="vertical"
+        android:layout_marginTop="@dimen/dp80"
+        android:layout_marginBottom="@dimen/dp40"
+        >
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:hint="Username"
+            android:textColorHint="@color/white"
+            >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edtUsername"
+                android:drawablePadding="@dimen/dp10"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:textColor="@color/white"
+                android:inputType="text"
+                android:focusable="true"
+                />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:hint="Password"
+            android:textColorHint="@color/white"
+            >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edtPassword"
+                android:drawablePadding="@dimen/dp10"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:inputType="textPassword"
+                android:textColor="@color/white"
+                android:focusable="true"
+                />
+        </com.google.android.material.textfield.TextInputLayout>
+
+    </LinearLayout>
     <Button
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/dp40"
+        android:layout_gravity="center|bottom"
+        android:background="@drawable/radius_5_half"
+        android:layout_margin="@dimen/dp20"
+        android:textColor="@color/white"
+        android:textSize="@dimen/dp20"
         android:text="Login"
-        android:onClick="clickToLogin"/>
+        android:onClick="clickToLogin"
+        />
+
 
 
 </LinearLayout>

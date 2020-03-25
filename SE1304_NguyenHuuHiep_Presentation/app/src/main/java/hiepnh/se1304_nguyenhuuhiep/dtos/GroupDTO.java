@@ -5,6 +5,11 @@ import java.io.Serializable;
 public class GroupDTO implements Serializable {
     String groupId,groupName,username;
 
+    public GroupDTO(String groupId, String groupName) {
+        this.groupId = groupId;
+        this.groupName = groupName;
+    }
+
     public GroupDTO() {
     }
 

@@ -4,28 +4,41 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@mipmap/pic1"
     android:orientation="vertical"
+
     tools:context=".allactivity.UserSearchActivity">
 
     <LinearLayout
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
         <Button
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/dp40"
+            android:layout_gravity="center|bottom"
+            android:background="@drawable/radius_5_half"
+            android:textColor="@color/white"
+            android:textSize="@dimen/dp10"
             android:text="Search"
             android:onClick="searchStatus"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Status"
+            android:layout_margin="@dimen/dp15"
+            android:textColor="@color/duskYellow"
             android:textSize="20dp"/>
         <Spinner
             android:id="@+id/spStatus"
-            android:layout_width="wrap_content"
+            android:layout_width="120dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"/>
+            android:background="@drawable/test"
+            android:layout_gravity="center"
+            android:textAlignment="center"
+            android:layout_marginTop="@dimen/dp10"
+            android:gravity="center"/>
 
     </LinearLayout>
 
@@ -35,30 +48,38 @@
         android:orientation="horizontal">
         <Button
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/dp40"
+            android:layout_gravity="center|bottom"
+            android:background="@drawable/radius_5_half"
+            android:textColor="@color/white"
+            android:textSize="@dimen/dp10"
             android:text="Search"
             android:onClick="searchTime"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="@color/white"
             android:text="From: "/>
         <EditText
             android:id="@+id/edtFrom"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:hint="dd/MM/yyyy"
+            android:textColorHint="@color/darkGray"
             android:inputType="none"
             android:editable="false"
             android:onClick="getFrom"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="@color/white"
             android:text="To: "/>
         <EditText
             android:id="@+id/edtTo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:hint="dd/MM/yyyy"
+            android:textColorHint="@color/darkGray"
             android:inputType="none"
             android:editable="false"
             android:onClick="getTo"/>

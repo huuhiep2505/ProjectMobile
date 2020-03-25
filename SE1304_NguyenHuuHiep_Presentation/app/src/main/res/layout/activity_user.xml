@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@mipmap/pic5"
     tools:context=".allactivity.UserActivity">
 
     <LinearLayout
@@ -17,6 +18,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="List Working"
+            android:textColor="@color/duskYellow"
             android:textStyle="bold"
             android:textSize="40dp"
             android:gravity="center"/>
@@ -43,17 +45,32 @@
         android:orientation="horizontal">
         <Button
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/dp40"
+            android:layout_gravity="center|bottom"
+            android:background="@drawable/radius_5_half"
+            android:layout_margin="@dimen/dp2"
+            android:textColor="@color/white"
+            android:textSize="@dimen/dp15"
             android:text="Logout"
             android:onClick="clickToLogout"/>
         <Button
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/dp40"
+            android:layout_gravity="center|bottom"
+            android:background="@drawable/radius_5_half"
+            android:layout_margin="@dimen/dp2"
+            android:textColor="@color/white"
+            android:textSize="@dimen/dp15"
             android:text="Search"
             android:onClick="clickToSearch"/>
         <Button
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/dp40"
+            android:layout_gravity="center|bottom"
+            android:background="@drawable/radius_5_half"
+            android:layout_margin="@dimen/dp2"
+            android:textColor="@color/white"
+            android:textSize="@dimen/dp15"
             android:text="Create Work"
             android:onClick="clickToCreateWork"/>
     </LinearLayout>

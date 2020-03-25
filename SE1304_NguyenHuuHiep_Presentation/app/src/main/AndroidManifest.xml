@@ -11,7 +11,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".allactivity.UpdateWorkingActivity"></activity>
+        <activity android:name=".allactivity.ManagerShowWorkActivity"></activity>
+        <activity android:name=".allactivity.AdminRequestTaskActivity" />
+        <activity android:name=".allactivity.GroupUpdateStatusActivity" />
+        <activity android:name=".allactivity.GroupWorkingDetailActivity" />
+        <activity android:name=".allactivity.WorkingRequestActivity" />
+        <activity android:name=".allactivity.GroupUserDetailActivity" />
+        <activity android:name=".allactivity.GroupDetailActivity" />
+        <activity android:name=".allactivity.ManagerActivity" />
+        <activity android:name=".allactivity.UpdateWorkingActivity" />
         <activity android:name=".allactivity.ChooseUserActivity" />
         <activity android:name=".allactivity.CreateGroupActivity" />
         <activity android:name=".allactivity.UpdateInformationAccountActivity" />
