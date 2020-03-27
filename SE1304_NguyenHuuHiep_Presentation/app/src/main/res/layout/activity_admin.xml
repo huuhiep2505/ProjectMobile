@@ -27,6 +27,16 @@
         android:textSize="@dimen/dp20"
         android:text="Group management"
         android:onClick="clickToGroupManagement"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp40"
+        android:layout_gravity="center|bottom"
+        android:background="@drawable/radius_5_half"
+        android:layout_margin="@dimen/dp20"
+        android:textColor="@color/white"
+        android:textSize="@dimen/dp20"
+        android:text="QR CODE"
+        android:onClick="clickToQRCode"/>
 
     <Button
         android:layout_width="@dimen/dp200"

@@ -14,7 +14,7 @@ public class MyConnection{
                 .permitAll().build();
         StrictMode.setThreadPolicy(policy);
             Class.forName("net.sourceforge.jtds.jdbc.Driver");
-        return DriverManager.getConnection("jdbc:jtds:sqlserver://192.168.0.111:1433;" +
+        return DriverManager.getConnection("jdbc:jtds:sqlserver://172.20.10.7:1433;" +
                 "databaseName=PRM391","sa", "123456");
     }
 }

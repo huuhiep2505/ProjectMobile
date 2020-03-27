@@ -3,6 +3,10 @@
     package="hiepnh.se1304_nguyenhuuhiep">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
 
     <application
         android:allowBackup="true"
@@ -11,7 +15,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".allactivity.ManagerShowWorkActivity"></activity>
+        <activity android:name=".allactivity.UserDetailScanActivity"></activity>
+        <activity android:name=".allactivity.SearchQRCodeActivity" />
+        <activity android:name=".allactivity.ManagerShowWorkActivity" />
         <activity android:name=".allactivity.AdminRequestTaskActivity" />
         <activity android:name=".allactivity.GroupUpdateStatusActivity" />
         <activity android:name=".allactivity.GroupWorkingDetailActivity" />

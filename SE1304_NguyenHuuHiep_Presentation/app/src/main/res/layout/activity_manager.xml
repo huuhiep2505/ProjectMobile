@@ -44,7 +44,7 @@
         android:gravity="center"
         android:orientation="horizontal">
         <Button
-            android:layout_width="wrap_content"
+            android:layout_width="70dp"
             android:layout_height="@dimen/dp40"
             android:layout_gravity="center|bottom"
             android:background="@drawable/radius_5_half"
@@ -53,7 +53,7 @@
             android:text="Logout"
             android:onClick="clickToLogout"/>
         <Button
-            android:layout_width="wrap_content"
+            android:layout_width="75dp"
             android:layout_height="@dimen/dp40"
             android:layout_gravity="center|bottom"
             android:background="@drawable/radius_5_half"
@@ -62,21 +62,30 @@
             android:text="Search"
             android:onClick="clickToSearch"/>
         <Button
-            android:layout_width="wrap_content"
+            android:layout_width="75dp"
             android:layout_height="@dimen/dp40"
             android:layout_gravity="center|bottom"
             android:background="@drawable/radius_5_half"
             android:layout_marginRight="@dimen/dp5"
             android:textColor="@color/white"
-            android:text="Create Work"
+            android:text="Create"
             android:onClick="clickToCreateWork"/>
         <Button
-            android:layout_width="wrap_content"
+            android:layout_width="75dp"
+            android:layout_height="@dimen/dp40"
+            android:layout_gravity="center|bottom"
+            android:background="@drawable/radius_5_half"
+            android:layout_marginRight="@dimen/dp5"
+            android:textColor="@color/white"
+            android:text="Show"
+            android:onClick="clickToShowWork"/>
+        <Button
+            android:layout_width="50dp"
             android:layout_height="@dimen/dp40"
             android:layout_gravity="center|bottom"
             android:background="@drawable/radius_5_half"
             android:textColor="@color/white"
-            android:text="Show Work"
-            android:onClick="clickToShowWork"/>
+            android:text="QR"
+            android:onClick="clickToQRCode"/>
     </LinearLayout>
 </LinearLayout>

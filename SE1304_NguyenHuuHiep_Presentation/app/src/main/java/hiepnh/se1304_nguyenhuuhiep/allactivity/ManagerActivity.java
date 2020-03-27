@@ -90,4 +90,9 @@ public class ManagerActivity extends AppCompatActivity {
         intent.putExtra("Username", username);
         startActivity(intent);
     }
+
+    public void clickToQRCode(View view) {
+        Intent intent = new Intent(this, SearchQRCodeActivity.class);
+        startActivity(intent);
+    }
 }

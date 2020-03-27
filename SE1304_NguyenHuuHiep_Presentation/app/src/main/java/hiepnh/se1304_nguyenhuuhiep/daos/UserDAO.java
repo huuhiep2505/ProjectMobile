@@ -275,4 +275,26 @@ public class UserDAO implements Serializable {
         }
         return listUsername;
     }
+    public UserDTO getUserScan(String username) {
+
+        UserDTO dto = null;
+        try {
+            String sql = "Select username, fullname, phone, address, email, birthday, role, groupId From Users Where username = ?";
+            conn = MyConnection.getMyConnection();
+            preStm = conn.prepareStatement(sql);
+            preStm.setString(1, username);
+            rs = preStm.executeQuery();
+
+            while (rs.next()) {
+                dto = new UserDTO(rs.getString("username"), rs.getString("fullname"), rs.getString("phone")
+                        , rs.getString("address"),rs.getString("email")
+                        , rs.getString("role"), rs.getString("groupId"), rs.getString("birthday"));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            closeConnection();
+        }
+        return dto;
+    }
 }

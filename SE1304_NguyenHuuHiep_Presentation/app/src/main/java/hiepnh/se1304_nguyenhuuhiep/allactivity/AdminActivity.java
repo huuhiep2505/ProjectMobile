@@ -31,4 +31,9 @@ public class AdminActivity extends AppCompatActivity {
         startActivity(intent);
         finish();
     }
+
+    public void clickToQRCode(View view) {
+        Intent intent = new Intent(this, SearchQRCodeActivity.class);
+        startActivity(intent);
+    }
 }
